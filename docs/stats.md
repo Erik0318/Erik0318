@@ -23,6 +23,8 @@ node --test scripts/*.test.mjs
 
 Edit `profile.config.json` for the username, selected projects, and language exclusions. Edit the README outside its `profile:start` / `profile:end` markers for the introduction and layout. Generated files should be rebuilt with the script.
 
+The profile itself contains animated vector project tiles, the snake, and charts. Project descriptions, releases, and detailed tables are generated into [activity.md](./activity.md), linked as **Data** below the graphics. The small header accents contain only colored vector paths. No photos or raster illustrations are used. Each project tile links to its repository and has a text alternative; its decorative animation also respects reduced motion.
+
 ## What is measured
 
 - **Contributions:** GitHub's contribution calendar over 365 UTC dates, including today. Commit, issue, pull request, and review counts come from the same collection. GitHub's contribution eligibility rules apply; these are not a count of every commit on every branch.

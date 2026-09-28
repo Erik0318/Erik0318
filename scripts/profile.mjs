@@ -3,6 +3,7 @@ import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { renderDashboard, groupWeeks, repositoryLanguages } from './graphics.mjs';
+import { renderProject, projectSlug, accents } from './tiles.mjs';
 export { renderDashboard };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -135,6 +136,35 @@ export function analyze(snapshot, config) {
 }
 
 export function generatedReadme(snapshot, stats, config) {
+  const tiles = config.projects.map(project => {
+    const repo = snapshot.repos.find(repo => repo.name === project.name);
+    if (!repo) throw new Error(`Selected project not found: ${project.name}`);
+    const slug = projectSlug(project);
+    return `  <a href="${safeUrl(repo.url)}"><picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-${slug}-dark.svg" />
+    <img src="./assets/project-${slug}-light.svg" width="410" alt="${escape(project.title ?? project.name)} — ${escape(project.description)}" />
+  </picture></a>`;
+  });
+  const rows = [];
+  for (let i = 0; i < tiles.length; i += 2) rows.push('<p>\n' + tiles.slice(i, i + 2).join('\n') + '\n</p>');
+  return `<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
+  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
+</picture>
+
+${rows.join('\n\n')}
+
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/stats-dark-mobile.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/stats-light-mobile.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg" />
+  <img src="./assets/stats-light.svg" width="100%" alt="${number(stats.total)} contributions, ${number(stats.commits)} commits, ${stats.prs} pull requests. Full data available below." />
+</picture>
+
+<sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/${config.username}/GithubProfile/actions/workflows/profile.yml) · ${new Date(snapshot.updatedAt).toISOString().slice(0, 16).replace('T', ' ')} UTC</sub>`;
+}
+
+export function generatedDetails(snapshot, stats, config) {
   const projects = config.projects.map(project => {
     const repo = snapshot.repos.find(repo => repo.name === project.name);
     if (!repo) throw new Error(`Selected project not found: ${project.name}`);
@@ -149,28 +179,13 @@ export function generatedReadme(snapshot, stats, config) {
   const history = groupWeeks(stats.days);
   const peakWeek = history.reduce((best, week) => week.value > best.value ? week : best, history[0]);
   const code = repositoryLanguages(snapshot, config);
-  return `<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
-  <img src="./assets/snake-light.svg" width="100%" alt="Animated snake eating my GitHub contribution calendar. Regenerated every six hours from real contributions." />
-</picture>
-
-### Projects
+  return `# Projects
 
 | Project | Engineering work | Built with |
 | :--- | :--- | :--- |
 ${projects.join('\n')}
 
-### GitHub activity
-
-<picture>
-  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/stats-dark-mobile.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/stats-light-mobile.svg" />
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg" />
-  <img src="./assets/stats-light.svg" width="100%" alt="${number(stats.total)} contributions, ${number(stats.commits)} commits, ${stats.prs} pull requests, ${stats.stars} stars, and ${stats.repos} public repositories. More statistics are available as text below." />
-</picture>
-
-<details>
-<summary>More stats &amp; recent releases</summary>
+## Statistics
 
 | Past year | |
 | :--- | ---: |
@@ -206,9 +221,8 @@ ${code.map(repo => `| ${markdown(repo.title)} | ${number(repo.total)} bytes | ${
 
 <sub>Activity covers ${iso(snapshot.contributions.startedAt)} through ${iso(snapshot.updatedAt)} (UTC). Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
 
-</details>
-
-<sub>Updated ${new Date(snapshot.updatedAt).toISOString().slice(0, 16).replace('T', ' ')} UTC · Refreshes every 6 hours · [How these stats work](./docs/stats.md)</sub>`;
+[Methodology and refresh settings](./stats.md)
+`;
 }
 
 export function replaceSection(readme, content) {
@@ -236,6 +250,11 @@ export async function main(args = process.argv.slice(2)) {
   const readmePath = resolve(ROOT, 'README.md');
   const readme = await readFile(readmePath, 'utf8');
   const output = new Map([['README.md', replaceSection(readme, generatedReadme(snapshot, stats, config))]]);
+  output.set('docs/activity.md', generatedDetails(snapshot, stats, config));
+  output.set('assets/accents.svg', accents);
+  for (const project of config.projects) for (const theme of ['light', 'dark']) {
+    output.set(`assets/project-${projectSlug(project)}-${theme}.svg`, renderProject(project, theme));
+  }
   for (const theme of ['light', 'dark']) for (const mobile of [false, true]) {
     output.set(`assets/stats-${theme}${mobile ? '-mobile' : ''}.svg`, renderDashboard(snapshot, stats, theme, mobile, config));
   }

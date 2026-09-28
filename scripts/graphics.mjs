@@ -44,7 +44,7 @@ export function renderDashboard(snapshot, stats, themeName, mobile = false, conf
   const date = new Date(snapshot.updatedAt).toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'short', day: 'numeric' });
   text(24, 32, 'GitHub activity', 16, t.fg, 'font-weight="600"');
   text(mobile ? 24 : w - 24, mobile ? 54 : 32, date, 11, t.muted, mobile ? '' : 'text-anchor="end"');
-  text(24, mobile ? 78 : 56, 'Past year · stars and repositories: all time', 11);
+  text(24, mobile ? 78 : 56, 'Activity: 12 mo', 11);
   const metrics = [[stats.total, 'Contributions'], [stats.commits, 'Commits'], [stats.prs, 'Pull requests'],
     [stats.reviews, 'Reviews'], [stats.stars, 'Stars received'], [stats.repos, 'Public repos']];
   metrics.forEach(([value, label], i) => {
@@ -64,7 +64,7 @@ export function renderDashboard(snapshot, stats, themeName, mobile = false, conf
 
   // Weekly area graph: exactly the contribution calendar, including partial boundary weeks.
   const historyY = mobile ? 351 : 241;
-  header(24, historyY, 'Contribution history', 'Weekly totals · past year, UTC');
+  header(24, historyY, 'Contribution history', 'Weekly · UTC');
   const weeks = groupWeeks(stats.days);
   const chart = { x: 50, y: historyY + 55, width: mobile ? 346 : 365, height: 108 };
   const peak = Math.max(1, ...weeks.map(week => week.value));
@@ -93,7 +93,7 @@ export function renderDashboard(snapshot, stats, themeName, mobile = false, conf
   // Doughnut: the same exact byte weights as the text breakdown, with a stable palette.
   if (mobile) line(548);
   const languageX = mobile ? 24 : 478, languageY = mobile ? 577 : 241;
-  header(languageX, languageY, 'Language mix', 'Share of code bytes · original, active repositories');
+  header(languageX, languageY, 'Language mix', 'Code bytes');
   const cx = languageX + 72, cy = languageY + 112, radius = 61, circumference = 2 * Math.PI * radius;
   svg.push(`<circle cx="${cx}" cy="${cy}" r="${radius}" fill="none" stroke="${t.empty}" stroke-width="18"/>`);
   let angle = 0;
@@ -115,7 +115,7 @@ export function renderDashboard(snapshot, stats, themeName, mobile = false, conf
 
   line(mobile ? 789 : 451);
   const rhythmY = mobile ? 821 : 486;
-  header(24, rhythmY, 'Weekly rhythm', 'Contributions by weekday · past year, UTC');
+  header(24, rhythmY, 'Weekly rhythm', 'UTC');
   const rhythmWidth = mobile ? 372 : 394, gap = rhythmWidth / 7;
   const maxDay = Math.max(1, ...stats.weekdays), baseline = rhythmY + 125;
   stats.weekdays.forEach((value, i) => {
@@ -127,7 +127,7 @@ export function renderDashboard(snapshot, stats, themeName, mobile = false, conf
 
   if (mobile) line(991);
   const repoX = mobile ? 24 : 478, repoY = mobile ? 1023 : 486;
-  header(repoX, repoY, 'Inside the repositories', 'Language composition · five largest by code size');
+  header(repoX, repoY, 'Inside the repositories', 'Code bytes');
   const repos = repositoryLanguages(snapshot, config);
   if (!repos.length) text(repoX, repoY + 65, 'No repository language data yet.', 12);
   const labelWidth = mobile ? 135 : 149, barWidth = mobile ? 178 : 189;

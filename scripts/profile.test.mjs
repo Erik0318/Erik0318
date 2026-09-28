@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { analyze, renderDashboard, replaceSection, escape, generatedReadme } from './profile.mjs';
+import { analyze, renderDashboard, replaceSection, escape, generatedReadme, generatedDetails } from './profile.mjs';
 
 const config = { username: 'sample', excludeFromLanguages: ['profile'], projects: [] };
 const repo = (name, bytes, extra = {}) => ({ name, url: `https://github.com/sample/${name}`, isArchived: false,
@@ -95,7 +95,7 @@ test('unavailable projects abort; API-provided titles cannot inject markup or ta
   assert.throws(() => generatedReadme(snapshot, stats, { ...config, projects: [{ name: 'missing' }] }));
   const malicious = repo('safe', [], { latestRelease: { tagName: '[bad]|<script>', publishedAt: '2024-02-27T00:00:00Z', url: 'https://github.com/sample/safe/releases/tag/v1' } });
   snapshot.repos = [malicious];
-  const readme = generatedReadme(snapshot, stats, config);
+  const readme = generatedDetails(snapshot, stats, config);
   assert.ok(!readme.includes('<script>'));
   assert.ok(readme.includes('&#124;'));
   assert.equal(escape('A&B'), 'A&amp;B');
