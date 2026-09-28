@@ -1,4 +1,4 @@
-# Erik <img src="./assets/accents.svg" width="88" height="25" alt="" />
+# Welcome!! <img src="./assets/accents.svg" width="88" height="25" alt="" />
 
 [erikdev.cc ↗](https://erikdev.cc) · [GitHub](https://github.com/Erik0318?tab=repositories)
 
