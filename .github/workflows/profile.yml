@@ -1,0 +1,64 @@
+name: Refresh profile
+
+on:
+  schedule:
+    - cron: '23 6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/**
+      - profile.config.json
+      - README.md
+      - .github/workflows/profile.yml
+  pull_request:
+    paths:
+      - scripts/**
+      - profile.config.json
+      - .github/workflows/profile.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test scripts/profile.test.mjs
+      - run: node scripts/profile.mjs --check
+
+  refresh:
+    if: github.event_name != 'pull_request'
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fetch GitHub data and render profile
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/profile.mjs --refresh
+      - run: node scripts/profile.mjs --check
+      - name: Commit only changed generated files
+        run: |
+          git add README.md data/profile.json assets/stats-*.svg
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Refresh profile statistics'
+          git push origin HEAD:main

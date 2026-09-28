@@ -1,0 +1,10 @@
+{
+  "username": "Erik0318",
+  "excludeFromLanguages": ["GithubProfile", "Erik0318"],
+  "projects": [
+    { "name": "Suture", "description": "Cross-platform audio app: CD import, ordered track export, chapters, and bundled FFmpeg.", "stack": "Rust · egui · FFmpeg" },
+    { "name": "tang25k-cpu", "title": "Tang25K CPU", "description": "A 16-bit computer built for the Tang Primer 25K FPGA. In progress.", "stack": "Verilog · FPGA" },
+    { "name": "Letterboxd-AI-Review", "title": "Letterboxd analytics", "description": "Parses Letterboxd exports locally into film analytics, reports, and optional AI taste notes.", "stack": "TypeScript · React · Cloudflare" },
+    { "name": "TempoPilot", "description": "Keyboard-driven video speed control with rebindable shortcuts and automatic video selection.", "stack": "JavaScript · WebExtensions" }
+  ]
+}

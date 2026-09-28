@@ -1,128 +1,64 @@
-<div align="center">
-  <img src="./assets/workbench.webp" width="100%" alt="A cinematic digital workbench connecting software, sound, film, and FPGA circuitry" />
-  <br />
-  <img src="./assets/hero.svg" width="100%" alt="Erik — systems and product builder" />
-</div>
+# Erik
 
-<p align="center">
-  <a href="https://erikdev.cc"><img src="https://img.shields.io/badge/ENTER_THE_WORKBENCH-erikdev.cc-67F5D2?style=for-the-badge&labelColor=050914" alt="Visit erikdev.cc" /></a>
-  <a href="https://github.com/Erik0318?tab=repositories"><img src="https://img.shields.io/badge/OPEN_SOURCE_REPOS-9B6CFF?style=for-the-badge&logo=github&logoColor=white&labelColor=050914" alt="Explore my repositories" /></a>
-</p>
+Software, digital hardware, films, and music.
 
-<p align="center">
-  I make <strong>small, opinionated software</strong> and occasionally disappear down a hardware rabbit hole.<br />
-  Native media tools, local-first web apps, browser utilities, and a 16-bit computer built from logic gates.
-</p>
+I build desktop tools, browser utilities, and web apps. My recent work includes a Rust audio application and a 16-bit FPGA computer.
 
-<p align="center">
-  <code>fast over bloated</code>&nbsp;&nbsp;•&nbsp;&nbsp;<code>local over invasive</code>&nbsp;&nbsp;•&nbsp;&nbsp;<code>finished over perfect</code>
-</p>
+[Website](https://erikdev.cc) · [Repositories](https://github.com/Erik0318?tab=repositories) · [Film analytics demo](https://filmstats.erikdev.cc/)
 
-<br />
+<!-- profile:start -->
+### Projects
 
-<table>
-  <tr>
-    <td width="58%" valign="top">
-      <h3><code>~/signal</code></h3>
-      <pre>
-ROLE       builder / experimenter / debugger
-DOMAIN     software ↔ media ↔ hardware
-BIAS       useful, fast, memorable
-CURRENT    shipping Suture
-SIDE QUEST films, music, low-level CS/EE</pre>
-    </td>
-    <td width="42%" valign="top">
-      <h3><code>~/now</code></h3>
-      <p><strong>Suture</strong> is a local-first native app that stitches ordered audio tracks into one continuous file or static-cover video.</p>
-      <p>It bundles its own media tools and ships for Linux, Windows, and macOS.</p>
-      <p><a href="https://github.com/Erik0318/Suture"><strong>inspect the build →</strong></a></p>
-    </td>
-  </tr>
-</table>
+| Project | Engineering work | Built with |
+| :--- | :--- | :--- |
+| [Suture](https://github.com/Erik0318/Suture) | Cross-platform audio app: CD import, ordered track export, chapters, and bundled FFmpeg. | Rust · egui · FFmpeg |
+| [Tang25K CPU](https://github.com/Erik0318/tang25k-cpu) | A 16-bit computer built for the Tang Primer 25K FPGA. In progress. | Verilog · FPGA |
+| [Letterboxd analytics](https://github.com/Erik0318/Letterboxd-AI-Review) | Parses Letterboxd exports locally into film analytics, reports, and optional AI taste notes. | TypeScript · React · Cloudflare |
+| [TempoPilot](https://github.com/Erik0318/TempoPilot) | Keyboard-driven video speed control with rebindable shortcuts and automatic video selection. | JavaScript · WebExtensions |
 
-## `01 // selected builds`
+### GitHub activity
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <sub>DESKTOP · LOCAL FIRST</sub>
-      <h3>🪡 <a href="https://github.com/Erik0318/Suture">Suture</a></h3>
-      <p>Stitches albums, mixes, live recordings, and audio CDs into continuous audio or static-cover video—with real progress, chapters, CUE sheets, and no system FFmpeg required.</p>
-      <p><code>Rust</code> <code>egui</code> <code>FFmpeg</code> <code>Cross-platform</code></p>
-    </td>
-    <td width="50%" valign="top">
-      <sub>WEB · PRIVACY FIRST</sub>
-      <h3>🎞️ <a href="https://github.com/Erik0318/Letterboxd-AI-Review">Letterboxd AI Review</a></h3>
-      <p>Turns a Letterboxd export into deep, local analytics and optional AI taste notes—with no account, database, or mandatory data retention.</p>
-      <p><code>React</code> <code>TypeScript</code> <code>Cloudflare</code> <code>Data viz</code></p>
-      <p><a href="https://filmstats.erikdev.cc/">launch app ↗</a></p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <sub>HARDWARE · FROM SCRATCH</sub>
-      <h3>🧠 <a href="https://github.com/Erik0318/tang25k-cpu">Tang25K CPU</a></h3>
-      <p>A personal 16-bit computer taking shape on the Sipeed Tang Primer 25K FPGA—where the abstraction ends and the gates begin.</p>
-      <p><code>Verilog</code> <code>FPGA</code> <code>CPU design</code> <code>Digital logic</code></p>
-    </td>
-    <td width="50%" valign="top">
-      <sub>BROWSER · 15 KB OF FOCUS</sub>
-      <h3>⏱️ <a href="https://github.com/Erik0318/TempoPilot">TempoPilot</a></h3>
-      <p>Keyboard-first speed control for any HTML5 video. Framework-free, cross-browser, rebindable, and smart enough to find the video you actually mean.</p>
-      <p><code>JavaScript</code> <code>WebExtensions</code> <code>Manifest V3</code></p>
-    </td>
-  </tr>
-</table>
+<picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/stats-dark-mobile.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/stats-light-mobile.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg" />
+  <img src="./assets/stats-light.svg" width="100%" alt="239 contributions, 129 commits, 22 pull requests, 3 stars, and 9 public repositories. More statistics are available as text below." />
+</picture>
 
 <details>
-  <summary><strong>One more weird interface...</strong></summary>
-  <br />
-  <p><a href="https://github.com/Erik0318/Twigoo"><strong>Twigoo</strong></a> is a command-only, text-first forum prototype: no buttons, visible composer boxes, images, or icons—just a prompt and a language of commands.</p>
+<summary>More stats &amp; recent releases</summary>
+
+| Past year | |
+| :--- | ---: |
+| Contributions | 239 |
+| Commit contributions | 129 |
+| Pull requests opened | 22 |
+| Pull request reviews | 0 |
+| Issues opened | 1 |
+| Active days | 67 / 365 |
+| Current / longest streak | 1 / 10 days |
+| Most contributions in a day | 29 |
+
+**Recently pushed repositories**
+
+| Repository | Last push (UTC) | Stars | Forks |
+| :--- | :--- | ---: | ---: |
+| [Suture](https://github.com/Erik0318/Suture) | 2026-07-12 | 0 | 0 |
+| [tang25k-cpu](https://github.com/Erik0318/tang25k-cpu) | 2026-06-25 | 0 | 0 |
+| [Twigoo](https://github.com/Erik0318/Twigoo) | 2026-06-16 | 3 | 0 |
+| [TwigooForum](https://github.com/Erik0318/TwigooForum) | 2026-05-02 | 0 | 0 |
+
+**Latest releases**
+
+- **Suture [v1.0.0](https://github.com/Erik0318/Suture/releases/tag/v1.0.0)** · 2026-07-11
+
+**Languages by code size**
+
+TypeScript 38.1% · JavaScript 28.0% · Rust 13.2% · HTML 9.0% · CSS 7.6% · Other 4.0%
+
+<sub>Activity covers 2025-09-29 through 2026-09-28 (UTC). Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
+
 </details>
 
-## `02 // operating principles`
-
-<table>
-  <tr>
-    <td width="33%" valign="top">
-      <h3>◈ Local by default</h3>
-      <p>If computation can happen on your machine, it probably should.</p>
-    </td>
-    <td width="34%" valign="top">
-      <h3>⌁ Sharp interfaces</h3>
-      <p>Tools should have a point of view—and stay out of the way once learned.</p>
-    </td>
-    <td width="33%" valign="top">
-      <h3>⚡ Learn underneath</h3>
-      <p>From React state to CPU state: follow the abstraction until it becomes real.</p>
-    </td>
-  </tr>
-</table>
-
-## `03 // working set`
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=rust,ts,js,react,vite,nodejs,cloudflare,html,css,linux,git&theme=dark&perline=11" alt="Rust, TypeScript, JavaScript, React, Vite, Node.js, Cloudflare, HTML, CSS, Linux, and Git" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Verilog-050914?style=flat-square&logoColor=67F5D2" alt="Verilog" />
-  <img src="https://img.shields.io/badge/FPGA-050914?style=flat-square&logoColor=67F5D2" alt="FPGA" />
-  <img src="https://img.shields.io/badge/FFmpeg-050914?style=flat-square&logo=ffmpeg&logoColor=67F5D2" alt="FFmpeg" />
-  <img src="https://img.shields.io/badge/egui-050914?style=flat-square&logo=rust&logoColor=9B6CFF" alt="egui" />
-  <img src="https://img.shields.io/badge/WebExtensions-050914?style=flat-square&logo=firefoxbrowser&logoColor=FFB454" alt="WebExtensions" />
-</p>
-
-## `04 // signal map`
-
-<div align="center">
-  <img src="./assets/signal.svg" width="100%" alt="Animated map connecting Erik's projects to their languages and platforms" />
-</div>
-
-<br />
-
-<div align="center">
-  <img src="./assets/pulse.svg" width="100%" alt="Animated circuit pulse divider" />
-  <strong>Build the thing. Learn what is underneath. Ship the better version.</strong><br />
-  <sub><a href="https://erikdev.cc">erikdev.cc</a> · <a href="https://github.com/Erik0318?tab=repositories">all repositories</a></sub>
-</div>
+<sub>Updated 2026-09-28 · [How these stats work](./docs/stats.md)</sub>
+<!-- profile:end -->
