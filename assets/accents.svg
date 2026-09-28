@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="88" height="6" viewBox="0 0 88 6">
-<defs><clipPath id="a"><rect width="40" height="6" rx="3"/></clipPath><clipPath id="b"><rect x="48" width="40" height="6" rx="3"/></clipPath></defs>
-<g clip-path="url(#a)"><path fill="#5BCEFA" d="M0 0h8v6H0zM32 0h8v6h-8z"/><path fill="#F5A9B8" d="M8 0h8v6H8zM24 0h8v6h-8z"/><path fill="#FFFFFF" d="M16 0h8v6h-8z"/></g>
-<g clip-path="url(#b)"><path fill="#D60270" d="M48 0h16v6H48z"/><path fill="#9B4F96" d="M64 0h8v6h-8z"/><path fill="#0038A8" d="M72 0h16v6H72z"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="25" viewBox="0 0 88 25">
+<defs><clipPath id="a"><rect width="40" height="25" rx="3"/></clipPath><clipPath id="b"><rect x="48" width="40" height="25" rx="3"/></clipPath></defs>
+<g clip-path="url(#a)"><path fill="#5BCEFA" d="M0 0h40v5H0zM0 20h40v5H0z"/><path fill="#F5A9B8" d="M0 5h40v5H0zM0 15h40v5H0z"/><path fill="#FFFFFF" d="M0 10h40v5H0z"/></g>
+<g clip-path="url(#b)"><path fill="#D60270" d="M48 0h40v10H48z"/><path fill="#9B4F96" d="M48 10h40v5H48z"/><path fill="#0038A8" d="M48 15h40v10H48z"/></g>
 </svg>
