@@ -2,6 +2,8 @@ import { execFileSync } from 'node:child_process';
 import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { renderDashboard, groupWeeks, repositoryLanguages } from './graphics.mjs';
+export { renderDashboard };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DAY = 86_400_000;
@@ -132,129 +134,6 @@ export function analyze(snapshot, config) {
   };
 }
 
-const themes = {
-  light: { bg: '#ffffff', fg: '#24292f', muted: '#656d76', line: '#d8dee4', empty: '#eff1f3',
-    accent: '#3c796d', scale: ['#eff1f3', '#c6ded6', '#8cb9aa', '#579483', '#326c5e'],
-    bars: ['#426b61', '#628477', '#829c90', '#a0b3a5', '#becabd', '#dee3dc'] },
-  dark: { bg: '#0d1117', fg: '#e6edf3', muted: '#919aa5', line: '#30363d', empty: '#20262e',
-    accent: '#9bc5b5', scale: ['#20262e', '#2b4a41', '#3c6d5c', '#639781', '#9bc5b5'],
-    bars: ['#aecfbe', '#8eaf9f', '#709381', '#567362', '#3e5548', '#2c3c34'] },
-};
-
-export function renderDashboard(snapshot, stats, themeName, mobile = false) {
-  const t = themes[themeName];
-  if (!t) throw new Error('Unknown theme');
-  const w = mobile ? 420 : 900, h = mobile ? 1000 : 606;
-  const parts = [];
-  const text = (x, y, value, size = 13, color = t.muted, attrs = '') =>
-    parts.push(`<text x="${x}" y="${y}" font-size="${size}" fill="${color}" ${attrs}>${escape(value)}</text>`);
-  const rect = (x, y, width, height, fill, extra = '') =>
-    parts.push(`<rect x="${x}" y="${y}" width="${width}" height="${height}" rx="2" fill="${fill}" ${extra}/>`);
-  const line = (x1, y, x2) => parts.push(`<path d="M${x1} ${y}H${x2}" stroke="${t.line}"/>`);
-  const header = (x, y, title, caption) => {
-    text(x, y, title, 15, t.fg, 'font-weight="600"');
-    if (caption) text(x, y + 21, caption, 12);
-  };
-  const metrics = [[stats.total, 'Contributions'], [stats.commits, 'Commits'], [stats.prs, 'Pull requests'],
-    [stats.reviews, 'Reviews'], [stats.stars, 'Stars received'], [stats.repos, 'Public repos']];
-  const date = new Date(snapshot.updatedAt).toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'short', day: 'numeric' });
-  text(24, 32, 'GitHub, in numbers', 16, t.fg, 'font-weight="600"');
-  text(mobile ? 24 : w - 24, mobile ? 54 : 32, `Updated ${date}`, 12, t.muted, mobile ? '' : 'text-anchor="end"');
-  text(24, mobile ? 80 : 57, 'Activity: past year · repositories / stars: all time', mobile ? 11 : 12);
-  for (let i = 0; i < metrics.length; i++) {
-    const x = 24 + (i % (mobile ? 3 : 6)) * (mobile ? 126 : 144);
-    const y = (mobile ? 122 : 101) + (mobile ? Math.floor(i / 3) * 78 : 0);
-    text(x, y, number(metrics[i][0]), 31, t.fg, 'font-weight="600" class="metric"');
-    text(x, y + 24, metrics[i][1], mobile ? 11 : 12);
-  }
-  line(24, mobile ? 249 : 147, w - 24);
-
-  const calTop = mobile ? 280 : 181;
-  header(24, calTop, 'Contribution calendar', mobile ? 'Last 26 weeks · UTC' : 'Past year · UTC');
-  const weeks = mobile ? snapshot.contributions.contributionCalendar.weeks.slice(-26) : snapshot.contributions.contributionCalendar.weeks;
-  const cell = mobile ? 10 : 12;
-  const step = mobile ? 13 : Math.min(15, 802 / weeks.length);
-  const left = mobile ? 54 : 63, top = calTop + 55;
-  const max = Math.max(1, stats.bestDay);
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  let month = '', lastLabelX = -Infinity;
-  weeks.forEach((week, col) => {
-    const inRange = week.contributionDays.filter(d => d.date >= stats.days[0].date && d.date <= iso(snapshot.updatedAt));
-    const first = inRange[0];
-    if (!first) return;
-    const currentMonth = first.date.slice(0, 7);
-    const x = left + col * step;
-    if (currentMonth !== month && x - lastLabelX > 35 && x < w - 47) {
-      text(x, top - 10, monthNames[Number(first.date.slice(5, 7)) - 1], 10);
-      lastLabelX = x;
-    }
-    month = currentMonth;
-    inRange.forEach(day => {
-      const level = day.contributionCount ? Math.min(4, Math.ceil(Math.sqrt(day.contributionCount / max) * 4)) : 0;
-      const y = top + new Date(day.date).getUTCDay() * step;
-      parts.push(`<rect x="${x.toFixed(1)}" y="${y}" width="${cell}" height="${cell}" rx="2" fill="${t.scale[level]}"><title>${day.date}: ${number(day.contributionCount)} contributions</title></rect>`);
-    });
-  });
-  ['Mon', 'Wed', 'Fri'].forEach((day, i) => text(24, top + (i * 2 + 1) * step + 9, day, 10));
-  const legendY = top + 7 * step + 16;
-  text(24, legendY + 8, `${stats.active} active days in the past year`, mobile ? 10 : 12);
-  text(w - 149, legendY + 8, 'Less', 10);
-  t.scale.forEach((fill, i) => rect(w - 120 + i * 13, legendY, 10, 10, fill));
-  text(w - 48, legendY + 8, 'More', 10);
-
-  const streakTop = mobile ? 490 : 406;
-  const streaks = [[`${stats.current}d`, 'Current streak'], [`${stats.longest}d`, 'Longest streak'],
-    [number(stats.bestDay), 'Best day'], [`${Math.round(stats.active / stats.days.length * 100)}%`, 'Days active']];
-  streaks.forEach(([value, label], i) => {
-    const x = 24 + (i % (mobile ? 2 : 4)) * (mobile ? 198 : 216);
-    const y = streakTop + (mobile ? Math.floor(i / 2) * 64 : 0);
-    text(x, y, value, 22, t.fg, 'font-weight="600"');
-    text(x + (mobile ? 0 : 63), y + (mobile ? 20 : 0), label, 12);
-  });
-  line(24, mobile ? 600 : 432, w - 24);
-
-  const lowerTop = mobile ? 633 : 463;
-  header(24, lowerTop, 'Languages', 'Share of code bytes · original, active repositories');
-  const languageWidth = mobile ? 372 : 397;
-  let offset = 24;
-  stats.languages.forEach((lang, i) => {
-    const width = lang.percent / 100 * languageWidth;
-    rect(offset.toFixed(2), lowerTop + 38, width.toFixed(2), 7, t.bars[i]);
-    offset += width;
-  });
-  if (!stats.languages.length) text(24, lowerTop + 60, 'No language data yet.');
-  stats.languages.forEach((lang, i) => {
-    const x = 24 + i % 2 * (mobile ? 198 : 211);
-    const y = lowerTop + 72 + Math.floor(i / 2) * 24;
-    rect(x, y - 8, 7, 7, t.bars[i]);
-    text(x + 15, y, lang.name, 12, t.fg);
-    text(x + (mobile ? 174 : 186), y, `${lang.percent.toFixed(1)}%`, 12, t.muted, 'text-anchor="end"');
-  });
-
-  const rhythmX = mobile ? 24 : 478, rhythmY = mobile ? 810 : lowerTop;
-  if (mobile) line(24, 780, w - 24);
-  header(rhythmX, rhythmY, 'Weekly rhythm', 'Contributions by weekday · past year, UTC');
-  const rhythmWidth = mobile ? 372 : 398, gap = rhythmWidth / 7;
-  const peak = Math.max(1, ...stats.weekdays);
-  stats.weekdays.forEach((value, i) => {
-    const x = rhythmX + i * gap;
-    const baseline = rhythmY + 102;
-    const height = value / peak * 45;
-    rect(x + 9, baseline - height, gap - 20, Math.max(1, height), value ? t.accent : t.empty, 'class="bar"');
-    text(x + gap / 2, baseline - height - 8, number(value), 10, t.muted, 'text-anchor="middle"');
-    text(x + gap / 2, baseline + 20, ['M', 'T', 'W', 'T', 'F', 'S', 'S'][i], 11, t.muted, 'text-anchor="middle"');
-  });
-  if (mobile) text(24, 976, 'Generated from GitHub data. Refreshed daily.', 11);
-  const description = `${number(stats.total)} contributions, ${number(stats.commits)} commits, ${stats.prs} pull requests, ${stats.reviews} reviews in the past year. ${stats.stars} stars and ${stats.repos} public original repositories. Longest streak ${stats.longest} days. Updated ${date}.`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-labelledby="title desc">
-<title id="title">${escape(snapshot.login)} · GitHub statistics</title>
-<desc id="desc">${escape(description)}</desc>
-<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-variant-numeric:tabular-nums}.bar{animation:appear .8s ease-out both}@keyframes appear{from{opacity:.7}to{opacity:1}}@media(prefers-reduced-motion:reduce){.bar{animation:none}}</style>
-<rect x=".5" y=".5" width="${w - 1}" height="${h - 1}" rx="10" fill="${t.bg}" stroke="${t.line}"/>
-${parts.join('\n')}
-</svg>\n`;
-}
-
 export function generatedReadme(snapshot, stats, config) {
   const projects = config.projects.map(project => {
     const repo = snapshot.repos.find(repo => repo.name === project.name);
@@ -267,7 +146,15 @@ export function generatedReadme(snapshot, stats, config) {
   const recent = [...snapshot.repos].filter(repo => !config.excludeFromLanguages.includes(repo.name) && repo.pushedAt)
     .sort((a, b) => b.pushedAt.localeCompare(a.pushedAt)).slice(0, 4)
     .map(repo => `| [${markdown(repo.name)}](${safeUrl(repo.url)}) | ${iso(repo.pushedAt)} | ${repo.stargazerCount} | ${repo.forkCount} |`);
-  return `### Projects
+  const history = groupWeeks(stats.days);
+  const peakWeek = history.reduce((best, week) => week.value > best.value ? week : best, history[0]);
+  const code = repositoryLanguages(snapshot, config);
+  return `<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
+  <img src="./assets/snake-light.svg" width="100%" alt="Animated snake eating my GitHub contribution calendar. Regenerated every six hours from real contributions." />
+</picture>
+
+### Projects
 
 | Project | Engineering work | Built with |
 | :--- | :--- | :--- |
@@ -295,6 +182,7 @@ ${projects.join('\n')}
 | Active days | ${stats.active} / ${stats.days.length} |
 | Current / longest streak | ${stats.current} / ${stats.longest} days |
 | Most contributions in a day | ${stats.bestDay} |
+| Most active week | ${peakWeek.value} contributions · week of ${peakWeek.date} |
 
 **Recently pushed repositories**
 
@@ -310,11 +198,17 @@ ${releases.length ? releases.join('\n') : 'No public releases yet.'}
 
 ${stats.languages.map(lang => `${markdown(lang.name)} ${lang.percent.toFixed(1)}%`).join(' · ') || 'No language data yet.'}
 
+**Repository language composition**
+
+| Repository | Code size | Languages |
+| :--- | ---: | :--- |
+${code.map(repo => `| ${markdown(repo.title)} | ${number(repo.total)} bytes | ${repo.languages.map(language => `${markdown(language.name)} ${(language.bytes / repo.total * 100).toFixed(1)}%`).join(' · ')} |`).join('\n')}
+
 <sub>Activity covers ${iso(snapshot.contributions.startedAt)} through ${iso(snapshot.updatedAt)} (UTC). Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
 
 </details>
 
-<sub>Updated ${iso(snapshot.updatedAt)} · [How these stats work](./docs/stats.md)</sub>`;
+<sub>Updated ${new Date(snapshot.updatedAt).toISOString().slice(0, 16).replace('T', ' ')} UTC · Refreshes every 6 hours · [How these stats work](./docs/stats.md)</sub>`;
 }
 
 export function replaceSection(readme, content) {
@@ -343,7 +237,7 @@ export async function main(args = process.argv.slice(2)) {
   const readme = await readFile(readmePath, 'utf8');
   const output = new Map([['README.md', replaceSection(readme, generatedReadme(snapshot, stats, config))]]);
   for (const theme of ['light', 'dark']) for (const mobile of [false, true]) {
-    output.set(`assets/stats-${theme}${mobile ? '-mobile' : ''}.svg`, renderDashboard(snapshot, stats, theme, mobile));
+    output.set(`assets/stats-${theme}${mobile ? '-mobile' : ''}.svg`, renderDashboard(snapshot, stats, theme, mobile, config));
   }
   // Finish all API calls, validation, and rendering before replacing anything.
   if (args.includes('--check')) {

@@ -1,15 +1,16 @@
 # Profile statistics
 
-The README uses locally generated SVGs. GitHub serves the last successful snapshot even when its API or Actions is unavailable. No external image service, tracking pixel, personal access token, or npm package is required.
+The README uses generated SVGs committed to this repository. GitHub serves the last successful snapshot even when its API or Actions is unavailable. The charts are custom code; the snake uses the same [Platane/snk](https://github.com/Platane/snk) solver as the reference profile, with a custom palette. No external image service, tracking pixel, personal access token, or npm installation is required.
 
 ## Update
 
-GitHub Actions refreshes the data daily at 06:23 UTC, on relevant pushes, or through **Actions → Refresh profile → Run workflow**. Scheduled runs may be delayed by GitHub. The date printed on every dashboard shows when its data was collected.
+GitHub Actions refreshes all charts, statistics, releases, and the snake **every six hours**, at 00:23, 06:23, 12:23, and 18:23 UTC. Relevant pushes to this profile repository also refresh them. Run an immediate update through **Actions → Refresh profile → Run workflow**. Changes in other repositories are picked up by the next scheduled run. Scheduled runs may be delayed by GitHub; the timestamp below the stats shows the last successful collection.
 
 To refresh locally, install Node.js 22 and GitHub CLI, authenticate with `gh auth login`, and run:
 
 ```sh
 node scripts/profile.mjs --refresh
+node scripts/snake.mjs
 ```
 
 To rebuild offline from the saved snapshot:
@@ -17,7 +18,7 @@ To rebuild offline from the saved snapshot:
 ```sh
 node scripts/profile.mjs
 node scripts/profile.mjs --check
-node --test scripts/profile.test.mjs
+node --test scripts/*.test.mjs
 ```
 
 Edit `profile.config.json` for the username, selected projects, and language exclusions. Edit the README outside its `profile:start` / `profile:end` markers for the introduction and layout. Generated files should be rebuilt with the script.
@@ -30,6 +31,10 @@ Edit `profile.config.json` for the username, selected projects, and language exc
 - **Stars and repositories:** all public, owned, non-fork repositories, with repository pagination. Archived repositories remain in these counts.
 - **Languages:** code bytes returned by GitHub for public, owned, non-fork, non-archived repositories. Profile repositories are excluded so the generator does not distort the result. The largest five languages are shown separately; the rest are grouped under Other. This measures repository composition, not personal expertise or time spent coding.
 - **Weekly rhythm:** all contribution types aggregated by UTC weekday, not hours worked.
+- **Contribution history:** contributions grouped into Monday–Sunday UTC weeks, including partial weeks at the beginning and end of the year. The line and area share the same totals as the headline count.
+- **Language doughnut:** the same byte weights as the text language breakdown. The centre identifies the largest language; subtle entrance animation respects reduced motion.
+- **Repository language bars:** the five largest eligible repositories by code size. Each bar is normalized to its own repository size and colored by the same legend as the doughnut. The number at the right is thousands of bytes, not lines of code or hours spent.
+- **Contribution snake:** the Platane solver computes a path through the account's contribution calendar and outputs a looping SVG in both themes. Cells disappear as the snake eats them. Its calendar uses the upstream solver's GitHub query and may differ slightly at year boundaries from the explicit 365-date stats window.
 - **Recent repositories:** the most recent push timestamps, excluding profile repositories. Push time is not necessarily a human-authored commit.
 - **Releases:** the most recent stable public release returned for each repository, sorted by publication date.
 
@@ -37,7 +42,9 @@ The workflow uses the repository-scoped `GITHUB_TOKEN`. It does not require acce
 
 ## Rendering and reliability
 
-Four SVGs cover light/dark themes and desktop/mobile widths. GitHub's native `<picture>` element selects the appropriate asset. Mobile uses a legible 26-week calendar; headline totals and streaks still cover the full year. SVG titles and descriptions plus the expandable text stats provide text alternatives. A short entrance fade respects reduced-motion preferences; no JavaScript runs in the README.
+Four dashboard SVGs cover light/dark themes and desktop/mobile widths, with two additional theme-specific snake SVGs. GitHub's native `<picture>` element selects the appropriate asset. Mobile stacks charts vertically with readable labels. SVG titles and descriptions plus the expandable text stats provide text alternatives. Reduced-motion preferences stop chart animations and show the snake as a static contribution calendar. No JavaScript runs in the README.
+
+The snake generator downloads the SVG-only action bundle pinned to commit `d8f6715049803e982ee5ff501b6b9b7d5deeb09b`, runs it in a temporary directory, validates both themes, and then publishes the results. The GitHub token is passed only through the child process environment. Temporary bundles are removed afterwards. Upstream provenance remains embedded in each SVG.
 
 API errors, partial responses, missing projects, incomplete calendars, and inconsistent totals abort generation before outputs are replaced. Each file is written through a temporary file and renamed. The workflow only commits after the whole update and consistency check succeed, so failed runs preserve the published version. Writes are scoped to generated files, jobs are serialized, and a concurrent human push causes a normal push failure rather than a force push.
 
