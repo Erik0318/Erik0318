@@ -22,7 +22,7 @@ I build desktop tools, browser utilities, and web apps. My recent work includes 
   <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/stats-dark-mobile.svg" />
   <source media="(max-width: 600px)" srcset="./assets/stats-light-mobile.svg" />
   <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg" />
-  <img src="./assets/stats-light.svg" width="100%" alt="239 contributions, 129 commits, 22 pull requests, 3 stars, and 9 public repositories. More statistics are available as text below." />
+  <img src="./assets/stats-light.svg" width="100%" alt="240 contributions, 130 commits, 22 pull requests, 3 stars, and 9 public repositories. More statistics are available as text below." />
 </picture>
 
 <details>
@@ -30,13 +30,13 @@ I build desktop tools, browser utilities, and web apps. My recent work includes 
 
 | Past year | |
 | :--- | ---: |
-| Contributions | 239 |
-| Commit contributions | 129 |
+| Contributions | 240 |
+| Commit contributions | 130 |
 | Pull requests opened | 22 |
 | Pull request reviews | 0 |
 | Issues opened | 1 |
 | Active days | 67 / 365 |
-| Current / longest streak | 1 / 10 days |
+| Current / longest streak | 2 / 10 days |
 | Most contributions in a day | 29 |
 
 **Recently pushed repositories**
