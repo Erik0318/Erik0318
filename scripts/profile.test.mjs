@@ -25,6 +25,23 @@ test('streaks span leap day, and an unfinished today has a grace period', () => 
   assert.equal(stats.weekdays.reduce((a, b) => a + b, 0), 6);
 });
 
+test('rendered dates use Pacific time while date-only contribution buckets retain their dates', () => {
+  const snapshot = fixture([1]);
+  snapshot.updatedAt = '2024-02-27T02:30:00Z';
+  snapshot.repos = [repo('recent', [], { pushedAt: snapshot.updatedAt,
+    latestRelease: { tagName: 'v1', publishedAt: snapshot.updatedAt, url: 'https://github.com/sample/recent/releases/tag/v1' } })];
+  const stats = analyze(snapshot, config);
+  assert.equal(stats.days[0].date, '2024-02-27');
+  assert.match(generatedReadme(snapshot, stats, config), /2024-02-26 18:30 PST/);
+  const details = generatedDetails(snapshot, stats, config);
+  assert.match(details, /\| 2024-02-26 \|/);
+  assert.match(details, /\*\* · 2024-02-26/);
+  assert.match(details, /GitHub calendar dates 2024-02-27 through 2024-02-27/);
+  for (const theme of ['light', 'dark']) for (const mobile of [false, true]) {
+    assert.match(renderDashboard(snapshot, stats, theme, mobile), /Feb 26, 2024 · PT/);
+  }
+});
+
 test('a gap yesterday breaks the current streak, without erasing the longest', () => {
   const stats = analyze(fixture([1, 1, 1, 0, 0]), config);
   assert.equal(stats.current, 0);

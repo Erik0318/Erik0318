@@ -4,7 +4,7 @@ The README uses generated SVGs committed to this repository. GitHub serves the l
 
 ## Update
 
-GitHub Actions refreshes all charts, statistics, releases, and the snake **every six hours**, at 00:23, 06:23, 12:23, and 18:23 UTC. Relevant pushes to this profile repository also refresh them. Run an immediate update through **Actions → Refresh profile → Run workflow**. Changes in other repositories are picked up by the next scheduled run. Scheduled runs may be delayed by GitHub; the timestamp below the stats shows the last successful collection.
+GitHub Actions refreshes all charts, statistics, releases, and the snake **every six hours**, at 05:23, 11:23, 17:23, and 23:23 PDT (04:23, 10:23, 16:23, and 22:23 PST). Relevant pushes to this profile repository also refresh them. Run an immediate update through **Actions → Refresh profile → Run workflow**. Changes in other repositories are picked up by the next scheduled run. Scheduled runs may be delayed by GitHub; the timestamp below the stats shows the last successful collection.
 
 To refresh locally, install Node.js 22 and GitHub CLI, authenticate with `gh auth login`, and run:
 
@@ -27,13 +27,15 @@ The profile itself contains animated vector project tiles, the snake, and charts
 
 ## What is measured
 
-- **Contributions:** GitHub's contribution calendar over 365 UTC dates, including today. Commit, issue, pull request, and review counts come from the same collection. GitHub's contribution eligibility rules apply; these are not a count of every commit on every branch.
-- **Streaks:** consecutive UTC calendar dates with contributions, limited to the displayed year. A zero-count today does not end yesterday's streak until the day is over. A gap yesterday resets it to zero.
+Displayed timestamps and repository/release dates use Pacific time (`America/Los_Angeles`), automatically switching between PST and PDT. Stored API timestamps retain their original ISO format. GitHub supplies contribution totals in date-only calendar buckets without individual event timestamps; those dates, weekday groupings, and streaks are preserved rather than relabeled as Pacific activity.
+
+- **Contributions:** GitHub's contribution calendar over 365 GitHub calendar dates, including today. Commit, issue, pull request, and review counts come from the same collection. GitHub's contribution eligibility rules apply; these are not a count of every commit on every branch.
+- **Streaks:** consecutive GitHub calendar dates with contributions, limited to the displayed year. A zero-count today does not end yesterday's streak until the day is over. A gap yesterday resets it to zero.
 - **Active days:** dates with at least one contribution. Best day is the largest daily contribution count in the same window.
 - **Stars and repositories:** all public, owned, non-fork repositories, with repository pagination. Archived repositories remain in these counts.
 - **Languages:** code bytes returned by GitHub for public, owned, non-fork, non-archived repositories. Profile repositories are excluded so the generator does not distort the result. The largest five languages are shown separately; the rest are grouped under Other. This measures repository composition, not personal expertise or time spent coding.
-- **Weekly rhythm:** all contribution types aggregated by UTC weekday, not hours worked.
-- **Contribution history:** contributions grouped into Monday–Sunday UTC weeks, including partial weeks at the beginning and end of the year. The line and area share the same totals as the headline count.
+- **Weekly rhythm:** all contribution types aggregated by GitHub calendar weekday, not hours worked.
+- **Contribution history:** contributions grouped into Monday–Sunday GitHub calendar weeks, including partial weeks at the beginning and end of the year. The line and area share the same totals as the headline count.
 - **Language doughnut:** the same byte weights as the text language breakdown. The centre identifies the largest language; subtle entrance animation respects reduced motion.
 - **Repository language bars:** the five largest eligible repositories by code size. Each bar is normalized to its own repository size and colored by the same legend as the doughnut. The number at the right is thousands of bytes, not lines of code or hours spent.
 - **Contribution snake:** the Platane solver computes a path through the account's contribution calendar and outputs a looping SVG in both themes. Cells disappear as the snake eats them. Its calendar uses the upstream solver's GitHub query and may differ slightly at year boundaries from the explicit 365-date stats window.

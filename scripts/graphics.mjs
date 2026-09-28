@@ -1,3 +1,5 @@
+import { TIME_ZONE } from './time.mjs';
+
 const esc = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const count = value => new Intl.NumberFormat('en-US').format(value);
 const dayMillis = 86_400_000;
@@ -41,9 +43,9 @@ export function renderDashboard(snapshot, stats, themeName, mobile = false, conf
     text(x, y, title, 15, t.fg, 'font-weight="600"');
     text(x, y + 21, subtitle, 11);
   };
-  const date = new Date(snapshot.updatedAt).toLocaleDateString('en-US', { timeZone: 'UTC', year: 'numeric', month: 'short', day: 'numeric' });
+  const date = new Date(snapshot.updatedAt).toLocaleDateString('en-US', { timeZone: TIME_ZONE, year: 'numeric', month: 'short', day: 'numeric' });
   text(24, 32, 'GitHub activity', 16, t.fg, 'font-weight="600"');
-  text(mobile ? 24 : w - 24, mobile ? 54 : 32, date, 11, t.muted, mobile ? '' : 'text-anchor="end"');
+  text(mobile ? 24 : w - 24, mobile ? 54 : 32, `${date} · PT`, 11, t.muted, mobile ? '' : 'text-anchor="end"');
   text(24, mobile ? 78 : 56, 'Activity: 12 mo', 11);
   const metrics = [[stats.total, 'Contributions'], [stats.commits, 'Commits'], [stats.prs, 'Pull requests'],
     [stats.reviews, 'Reviews'], [stats.stars, 'Stars received'], [stats.repos, 'Public repos']];
@@ -64,7 +66,7 @@ export function renderDashboard(snapshot, stats, themeName, mobile = false, conf
 
   // Weekly area graph: exactly the contribution calendar, including partial boundary weeks.
   const historyY = mobile ? 351 : 241;
-  header(24, historyY, 'Contribution history', 'Weekly · UTC');
+  header(24, historyY, 'Contribution history', 'Weekly · GitHub calendar');
   const weeks = groupWeeks(stats.days);
   const chart = { x: 50, y: historyY + 55, width: mobile ? 346 : 365, height: 108 };
   const peak = Math.max(1, ...weeks.map(week => week.value));
@@ -115,7 +117,7 @@ export function renderDashboard(snapshot, stats, themeName, mobile = false, conf
 
   line(mobile ? 789 : 451);
   const rhythmY = mobile ? 821 : 486;
-  header(24, rhythmY, 'Weekly rhythm', 'UTC');
+  header(24, rhythmY, 'Weekly rhythm', 'GitHub calendar');
   const rhythmWidth = mobile ? 372 : 394, gap = rhythmWidth / 7;
   const maxDay = Math.max(1, ...stats.weekdays), baseline = rhythmY + 125;
   stats.weekdays.forEach((value, i) => {

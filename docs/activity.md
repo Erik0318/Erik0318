@@ -23,16 +23,16 @@
 
 **Recently pushed repositories**
 
-| Repository | Last push (UTC) | Stars | Forks |
+| Repository | Last push (Pacific) | Stars | Forks |
 | :--- | :--- | ---: | ---: |
-| [Suture](https://github.com/Erik0318/Suture) | 2026-07-12 | 0 | 0 |
-| [tang25k-cpu](https://github.com/Erik0318/tang25k-cpu) | 2026-06-25 | 0 | 0 |
-| [Twigoo](https://github.com/Erik0318/Twigoo) | 2026-06-16 | 3 | 0 |
+| [Suture](https://github.com/Erik0318/Suture) | 2026-07-11 | 0 | 0 |
+| [tang25k-cpu](https://github.com/Erik0318/tang25k-cpu) | 2026-06-24 | 0 | 0 |
+| [Twigoo](https://github.com/Erik0318/Twigoo) | 2026-06-15 | 3 | 0 |
 | [TwigooForum](https://github.com/Erik0318/TwigooForum) | 2026-05-02 | 0 | 0 |
 
-**Latest releases**
+**Latest releases (Pacific dates)**
 
-- **Suture [v1.0.0](https://github.com/Erik0318/Suture/releases/tag/v1.0.0)** · 2026-07-11
+- **Suture [v1.0.0](https://github.com/Erik0318/Suture/releases/tag/v1.0.0)** · 2026-07-10
 
 **Languages by code size**
 
@@ -48,6 +48,6 @@ TypeScript 38.1% · JavaScript 28.0% · Rust 13.2% · HTML 9.0% · CSS 7.6% · O
 | Suture | 139,655 bytes | Rust 95.0% · Shell 2.5% · PowerShell 1.7% · Inno Setup 0.9% |
 | TempoPilot | 39,373 bytes | JavaScript 78.3% · CSS 12.4% · HTML 9.2% |
 
-<sub>Activity covers 2025-09-29 through 2026-09-28 (UTC). Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
+<sub>Collected 2026-09-27 23:13 PDT. Activity covers GitHub calendar dates 2025-09-29 through 2026-09-28. Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
 
 [Methodology and refresh settings](./stats.md)

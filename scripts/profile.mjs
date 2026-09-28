@@ -4,6 +4,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { renderDashboard, groupWeeks, repositoryLanguages } from './graphics.mjs';
 import { renderProject, projectSlug, accents } from './tiles.mjs';
+import { pacificDate, pacificTimestamp } from './time.mjs';
 export { renderDashboard };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -161,7 +162,7 @@ ${rows.join('\n\n')}
   <img src="./assets/stats-light.svg" width="100%" alt="${number(stats.total)} contributions, ${number(stats.commits)} commits, ${stats.prs} pull requests. Full data available below." />
 </picture>
 
-<sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/${config.username}/GithubProfile/actions/workflows/profile.yml) · ${new Date(snapshot.updatedAt).toISOString().slice(0, 16).replace('T', ' ')} UTC</sub>`;
+<sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/${config.username}/GithubProfile/actions/workflows/profile.yml) · ${pacificTimestamp(snapshot.updatedAt)}</sub>`;
 }
 
 export function generatedDetails(snapshot, stats, config) {
@@ -172,10 +173,10 @@ export function generatedDetails(snapshot, stats, config) {
   });
   const releases = snapshot.repos.filter(repo => repo.latestRelease && !repo.latestRelease.isDraft && !repo.latestRelease.isPrerelease)
     .sort((a, b) => b.latestRelease.publishedAt.localeCompare(a.latestRelease.publishedAt)).slice(0, 3)
-    .map(repo => `- **${markdown(repo.name)} [${markdown(repo.latestRelease.tagName)}](${safeUrl(repo.latestRelease.url)})** · ${iso(repo.latestRelease.publishedAt)}`);
+    .map(repo => `- **${markdown(repo.name)} [${markdown(repo.latestRelease.tagName)}](${safeUrl(repo.latestRelease.url)})** · ${pacificDate(repo.latestRelease.publishedAt)}`);
   const recent = [...snapshot.repos].filter(repo => !config.excludeFromLanguages.includes(repo.name) && repo.pushedAt)
     .sort((a, b) => b.pushedAt.localeCompare(a.pushedAt)).slice(0, 4)
-    .map(repo => `| [${markdown(repo.name)}](${safeUrl(repo.url)}) | ${iso(repo.pushedAt)} | ${repo.stargazerCount} | ${repo.forkCount} |`);
+    .map(repo => `| [${markdown(repo.name)}](${safeUrl(repo.url)}) | ${pacificDate(repo.pushedAt)} | ${repo.stargazerCount} | ${repo.forkCount} |`);
   const history = groupWeeks(stats.days);
   const peakWeek = history.reduce((best, week) => week.value > best.value ? week : best, history[0]);
   const code = repositoryLanguages(snapshot, config);
@@ -201,11 +202,11 @@ ${projects.join('\n')}
 
 **Recently pushed repositories**
 
-| Repository | Last push (UTC) | Stars | Forks |
+| Repository | Last push (Pacific) | Stars | Forks |
 | :--- | :--- | ---: | ---: |
 ${recent.join('\n')}
 
-**Latest releases**
+**Latest releases (Pacific dates)**
 
 ${releases.length ? releases.join('\n') : 'No public releases yet.'}
 
@@ -219,7 +220,7 @@ ${stats.languages.map(lang => `${markdown(lang.name)} ${lang.percent.toFixed(1)}
 | :--- | ---: | :--- |
 ${code.map(repo => `| ${markdown(repo.title)} | ${number(repo.total)} bytes | ${repo.languages.map(language => `${markdown(language.name)} ${(language.bytes / repo.total * 100).toFixed(1)}%`).join(' · ')} |`).join('\n')}
 
-<sub>Activity covers ${iso(snapshot.contributions.startedAt)} through ${iso(snapshot.updatedAt)} (UTC). Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
+<sub>Collected ${pacificTimestamp(snapshot.updatedAt)}. Activity covers GitHub calendar dates ${stats.days[0].date} through ${stats.days.at(-1).date}. Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
 
 [Methodology and refresh settings](./stats.md)
 `;
@@ -268,7 +269,7 @@ export async function main(args = process.argv.slice(2)) {
   }
   if (args.includes('--refresh')) output.set('data/profile.json', JSON.stringify(snapshot, null, 2) + '\n');
   for (const [file, content] of output) await atomicWrite(resolve(ROOT, file), content);
-  console.log(`Updated ${output.size} files from ${snapshot.updatedAt}; ${stats.total} contributions, ${stats.repos} repositories.`);
+  console.log(`Updated ${output.size} files from ${pacificTimestamp(snapshot.updatedAt)}; ${stats.total} contributions, ${stats.repos} repositories.`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
