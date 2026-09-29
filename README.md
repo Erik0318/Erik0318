@@ -1,6 +1,6 @@
 # Welcome!! <img src="./assets/accents.svg" width="44" height="12.5" alt="" />
 
-[erikdev.cc ↗](https://erikdev.cc) · [GitHub](https://github.com/Erik0318?tab=repositories)
+[erikdev.cc ↗](https://erikdev.cc) · [GitHub](https://github.com/Erik0318?tab=repositories) · ![Profile views](https://komarev.com/ghpvc/?username=Erik0318&label=views&color=3c796d&style=flat)
 
 <!-- profile:start -->
 <picture>
