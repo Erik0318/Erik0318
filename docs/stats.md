@@ -1,6 +1,6 @@
 # Profile statistics
 
-The README uses generated SVGs committed to this repository. GitHub serves the last successful snapshot even when its API or Actions is unavailable. The charts are custom code; the snake uses the same [Platane/snk](https://github.com/Platane/snk) solver as the reference profile, with a custom palette. The header uses Shields.io link badges and a Visitor Badge profile-view counter. The view counter records page hits through GitHub's image proxy and cannot distinguish unique visitors. No personal access token or npm installation is required.
+The README uses generated SVGs committed to this repository. GitHub serves the last successful snapshot even when its API or Actions is unavailable. The charts are custom code; the snake uses the same [Platane/snk](https://github.com/Platane/snk) solver as the reference profile, with a custom palette. A Visitor Badge profile-view counter records page hits through GitHub's image proxy and cannot distinguish unique visitors. No personal access token or npm installation is required.
 
 ## Update
 
@@ -46,9 +46,7 @@ The workflow uses the repository-scoped `GITHUB_TOKEN`. It does not require acce
 
 ## Rendering and reliability
 
-**Signal Garden** is a custom vector sculpture above the contribution calendar. Four generated SVGs adapt it to light/dark themes and desktop/mobile layouts. Traveling light, a slow orbital instrument, and a floating woven knot run entirely inside the image, with a static composition for reduced-motion preferences. Clicking the scene opens [the interactive playground](https://erik0318.github.io/Erik0318/), deployed from `lab/` by the separate **Publish Signal Garden** workflow.
-
-The playground shares its geometry with the SVG generator and renders locally in Canvas without dependencies, analytics, external fonts, or network data. Pointer movement bends the sculpture; dragging and arrow keys rotate it; a click or tap creates a ripple. Four project-inspired forms morph into one another. Controls provide pause, reset, and tempo, with keys 1–4, Space, and R as shortcuts. Touchscreens support horizontal dragging while preserving vertical page scrolling. Reduced motion starts paused, the pause control stops automatic animation, and a hidden browser tab stops rendering. Pixel density is capped to limit work on high-resolution screens. GitHub README images cannot run JavaScript or forward pointer interactions, so the README provides the animation and a native expandable controls guide while the linked page provides the live controls.
+Project cards animate directly inside the GitHub README. Their diagrams explain an audio timeline with chapters, simplified CPU instruction flow, the path from CSV to film analytics, and the same clip playing at two speeds. These are labeled illustrations, not screenshots, live usage metrics, or exact hardware schematics. Each card includes a description and stack and links to its repository. Native expandable sections reveal snapshot-backed release information and the contribution calendar in place. No separate site or JavaScript is needed; reduced-motion preferences show meaningful static diagrams.
 
 Four dashboard SVGs cover light/dark themes and desktop/mobile widths, with two additional theme-specific snake SVGs. GitHub's native `<picture>` element selects the appropriate asset. Mobile stacks charts vertically with readable labels. SVG titles and descriptions plus the expandable text stats provide text alternatives. Reduced-motion preferences stop chart animations and show the snake as a static contribution calendar. No JavaScript runs in the README.
 

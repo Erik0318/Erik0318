@@ -1,9 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="440" height="112" viewBox="0 0 440 112" role="img" aria-labelledby="title desc">
-<title id="title">Tang25K</title><desc id="desc">A 16-bit computer built for the Tang Primer 25K FPGA. In progress.</desc>
-<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}.wave{transform-box:fill-box;transform-origin:center;animation:wave 2.8s ease-in-out infinite}.trace{animation:trace 4s linear infinite}.frames{animation:frames 5s ease-in-out infinite}.dial{transform-origin:352px 56px;animation:dial 12s linear infinite}@keyframes wave{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1)}}@keyframes trace{to{stroke-dashoffset:-48}}@keyframes frames{0%,100%{transform:translateX(-2px)}50%{transform:translateX(2px)}}@keyframes dial{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style>
-<rect x=".5" y=".5" width="439" height="111" rx="10" fill="#ffffff" stroke="#d8dee4"/>
-<text x="24" y="47" font-size="21" font-weight="600" fill="#24292f">Tang25K</text>
-<text x="24" y="74" font-size="12" fill="#656d76">Verilog / FPGA</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="252" viewBox="0 0 440 252" role="img" aria-labelledby="title desc">
+<title id="title">Tang25K CPU</title><desc id="desc">A 16-bit computer built for the Tang Primer 25K FPGA. In progress. Animated diagram is illustrative, not live application data.</desc>
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.caption{font-family:Consolas,Menlo,monospace;font-size:9px;letter-spacing:.6px;fill:#656d76}.faint{opacity:.8}
+.playhead{animation:seek 9s linear infinite}.trace{animation:trace 8s linear infinite}
+.stage{opacity:.12;animation:stage 8s linear infinite}.stage-1{animation-delay:2s}.stage-2{animation-delay:4s}.stage-3{animation-delay:6s}
+.film{animation:film 8s ease-in-out infinite}.film-1{animation-delay:.15s}.film-2{animation-delay:.3s}
+.insight{transform-box:fill-box;transform-origin:center bottom;animation:insight 8s ease-in-out infinite}
+.speed-0{stroke-dashoffset:35;animation:progress-normal 10s linear infinite}.speed-1{stroke-dashoffset:0;animation:progress-fast 10s linear infinite}
+.cursor-0{transform:translateX(227.5px);animation:normal-cursor 10s linear infinite}.cursor-1{transform:translateX(350px);animation:fast-cursor 10s linear infinite}
+@keyframes seek{0%,8%{transform:translateX(0)}90%,100%{transform:translateX(378px)}}
+@keyframes trace{to{stroke-dashoffset:-96}}
+@keyframes stage{0%,22%{opacity:1}25%,97%{opacity:.12}100%{opacity:1}}
+@keyframes film{0%,25%,100%{transform:translateY(0)}45%,75%{transform:translateY(-4px)}}
+@keyframes insight{0%,20%,100%{transform:scaleY(.7)}45%,80%{transform:scaleY(1)}}
+@keyframes progress-normal{0%,10%{stroke-dashoffset:100}90%,100%{stroke-dashoffset:0}}
+@keyframes progress-fast{0%,10%{stroke-dashoffset:100}50%,100%{stroke-dashoffset:0}}
+@keyframes normal-cursor{0%,10%{transform:translateX(0)}90%,100%{transform:translateX(350px)}}
+@keyframes fast-cursor{0%,10%{transform:translateX(0)}50%,100%{transform:translateX(350px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.playhead{transform:translateX(160px)}.stage{opacity:.35}}
+</style>
+<rect x=".5" y=".5" width="439" height="251" rx="10" fill="#ffffff" stroke="#d8dee4"/>
+<text x="24" y="35" font-size="21" font-weight="600" fill="#24292f">Tang25K CPU</text>
+<text x="24" y="60" font-size="13" fill="#656d76">A 16-bit computer on an FPGA.</text>
+<text x="24" y="79" font-size="13" fill="#656d76">Built for the Tang Primer 25K. In progress.</text>
 <path d="M413 20h8v8M412 29l9-9" fill="none" stroke="#656d76" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-<rect x="329" y="33" width="46" height="46" rx="7" fill="#edf4f0" stroke="#3c796d"/><rect x="342" y="46" width="20" height="20" rx="3" stroke="#3c796d" fill="none"/><path d="M339 22V33M339 79V90M318 43H329M375 43H386" stroke="#656d76" stroke-linecap="round"/><path d="M348 22V33M348 79V90M318 52H329M375 52H386" stroke="#656d76" stroke-linecap="round"/><path d="M357 22V33M357 79V90M318 61H329M375 61H386" stroke="#656d76" stroke-linecap="round"/><path d="M366 22V33M366 79V90M318 70H329M375 70H386" stroke="#656d76" stroke-linecap="round"/><path class="trace" d="M301 56H329M375 56H407" fill="none" stroke="#3c796d" stroke-width="2" stroke-dasharray="4 20"/>
+<g transform="translate(24 98)"><text x="0" y="12" class="caption">INSTRUCTION FLOW</text><text x="392" y="12" class="caption faint" text-anchor="end">SIMPLIFIED</text><path d="M40 55H352M352 76v16H40V76" fill="none" stroke="#d8dee4"/><path class="trace" d="M40 55H352M352 76v16H40V76" fill="none" stroke="#3c796d" stroke-dasharray="10 38" stroke-width="1.3"/><rect x="0" y="34" width="80" height="42" rx="6" fill="#ffffff" stroke="#d8dee4"/><rect class="stage stage-0" x="0" y="34" width="80" height="42" rx="6" fill="#edf4f0" stroke="#3c796d"/><text x="40" y="59" text-anchor="middle" fill="#24292f" font-size="10" letter-spacing="1">FETCH</text><rect x="104" y="34" width="80" height="42" rx="6" fill="#ffffff" stroke="#d8dee4"/><rect class="stage stage-1" x="104" y="34" width="80" height="42" rx="6" fill="#edf4f0" stroke="#3c796d"/><text x="144" y="59" text-anchor="middle" fill="#24292f" font-size="10" letter-spacing="1">DECODE</text><rect x="208" y="34" width="80" height="42" rx="6" fill="#ffffff" stroke="#d8dee4"/><rect class="stage stage-2" x="208" y="34" width="80" height="42" rx="6" fill="#edf4f0" stroke="#3c796d"/><text x="248" y="59" text-anchor="middle" fill="#24292f" font-size="10" letter-spacing="1">EXECUTE</text><rect x="312" y="34" width="80" height="42" rx="6" fill="#ffffff" stroke="#d8dee4"/><rect class="stage stage-3" x="312" y="34" width="80" height="42" rx="6" fill="#edf4f0" stroke="#3c796d"/><text x="352" y="59" text-anchor="middle" fill="#24292f" font-size="10" letter-spacing="1">WRITE</text></g>
+<path d="M24 218H416" stroke="#d8dee4"/>
+<text x="24" y="239" font-size="11" fill="#656d76">Verilog · FPGA</text>
 </svg>

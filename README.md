@@ -1,30 +1,9 @@
 # Welcome!! <img src="./assets/accents.svg" width="44" height="12.5" alt="" />
 
-[![Portfolio](https://img.shields.io/badge/PORTFOLIO-erikdev.cc-3c796d?style=for-the-badge&logo=safari&logoColor=white)](https://erikdev.cc) [![Repositories](https://img.shields.io/badge/GITHUB-REPOSITORIES-24292f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Erik0318?tab=repositories) ![Profile views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FErik0318&label=PROFILE%20VIEWS&labelColor=%23555&countColor=%233c796d&style=for-the-badge)
+[erikdev.cc ↗](https://erikdev.cc) · [Repositories](https://github.com/Erik0318?tab=repositories) · ![Profile views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FErik0318&label=views&labelColor=%23555&countColor=%233c796d&style=flat)
 
 <!-- profile:start -->
-<a href="https://erik0318.github.io/Erik0318/" aria-label="Open Signal Garden, an interactive sculpture playground">
-  <picture>
-    <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/scene-dark-mobile.svg" />
-    <source media="(max-width: 600px)" srcset="./assets/scene-light-mobile.svg" />
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/scene-dark.svg" />
-    <img src="./assets/scene-light.svg" width="100%" alt="Signal Garden. An animated luminous knot. Click to open the interactive playground: drag to orbit, move to bend, and explore four project-inspired sculptures." />
-  </picture>
-</a>
-
-<details>
-<summary>⌘ Playground controls &amp; field notes</summary>
-
-Open [Signal Garden](https://erik0318.github.io/Erik0318/), then move your pointer to bend the strands, drag to rotate, or click to send a ripple. Keys **1–4** change the sculpture, **Space** pauses, and **R** resets the orbit. On touchscreens, drag sideways or tap. The tempo slider changes the speed.
-
-Each form comes from a project below: **Resonance** folds a waveform into a knot, **Architecture** builds a circuit lattice, **Afterimage** twists a ribbon through space, and **Momentum** bends an orbit. Reduced-motion preferences start the playground paused and stop the README animation.
-
-</details>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
-  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
-</picture>
+### Selected work
 
 <p>
   <a href="https://github.com/Erik0318/Suture"><picture>
@@ -48,12 +27,45 @@ Each form comes from a project below: **Resonance** folds a waveform into a knot
   </picture></a>
 </p>
 
+<details>
+<summary>Project details &amp; latest releases</summary>
+
+**[Suture](https://github.com/Erik0318/Suture)** — Cross-platform audio app: CD import, ordered track export, chapters, and bundled FFmpeg.
+
+Rust · egui · FFmpeg · [v1.0.0](https://github.com/Erik0318/Suture/releases/tag/v1.0.0) · 2026-07-10
+
+**[Tang25K CPU](https://github.com/Erik0318/tang25k-cpu)** — A 16-bit computer built for the Tang Primer 25K FPGA. In progress.
+
+Verilog · FPGA · No stable release yet
+
+**[Letterboxd analytics](https://github.com/Erik0318/Letterboxd-AI-Review)** — Parses Letterboxd exports locally into film analytics, reports, and optional AI taste notes.
+
+TypeScript · React · Cloudflare · No stable release yet
+
+**[TempoPilot](https://github.com/Erik0318/TempoPilot)** — Keyboard-driven video speed control with rebindable shortcuts and automatic video selection.
+
+JavaScript · WebExtensions · No stable release yet
+
+</details>
+
+### Activity
+
 <picture>
   <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/stats-dark-mobile.svg" />
   <source media="(max-width: 600px)" srcset="./assets/stats-light-mobile.svg" />
   <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg" />
   <img src="./assets/stats-light.svg" width="100%" alt="247 contributions, 137 commits, 22 pull requests. Full data available below." />
 </picture>
+
+<details>
+<summary>Contribution calendar</summary>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
+  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
+</picture>
+
+</details>
 
 <sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/Erik0318/Erik0318/actions/workflows/profile.yml) · 2026-09-29 10:31 PDT</sub>
 <!-- profile:end -->

@@ -1,9 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="440" height="112" viewBox="0 0 440 112" role="img" aria-labelledby="title desc">
-<title id="title">Letterboxd</title><desc id="desc">Parses Letterboxd exports locally into film analytics, reports, and optional AI taste notes.</desc>
-<style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}.wave{transform-box:fill-box;transform-origin:center;animation:wave 2.8s ease-in-out infinite}.trace{animation:trace 4s linear infinite}.frames{animation:frames 5s ease-in-out infinite}.dial{transform-origin:352px 56px;animation:dial 12s linear infinite}@keyframes wave{0%,100%{transform:scaleY(.55)}50%{transform:scaleY(1)}}@keyframes trace{to{stroke-dashoffset:-48}}@keyframes frames{0%,100%{transform:translateX(-2px)}50%{transform:translateX(2px)}}@keyframes dial{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style>
-<rect x=".5" y=".5" width="439" height="111" rx="10" fill="#ffffff" stroke="#d8dee4"/>
-<text x="24" y="47" font-size="21" font-weight="600" fill="#24292f">Letterboxd</text>
-<text x="24" y="74" font-size="12" fill="#656d76">TypeScript / React</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="252" viewBox="0 0 440 252" role="img" aria-labelledby="title desc">
+<title id="title">Letterboxd analytics</title><desc id="desc">Parses Letterboxd exports locally into film analytics, reports, and optional AI taste notes. Animated diagram is illustrative, not live application data.</desc>
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.caption{font-family:Consolas,Menlo,monospace;font-size:9px;letter-spacing:.6px;fill:#656d76}.faint{opacity:.8}
+.playhead{animation:seek 9s linear infinite}.trace{animation:trace 8s linear infinite}
+.stage{opacity:.12;animation:stage 8s linear infinite}.stage-1{animation-delay:2s}.stage-2{animation-delay:4s}.stage-3{animation-delay:6s}
+.film{animation:film 8s ease-in-out infinite}.film-1{animation-delay:.15s}.film-2{animation-delay:.3s}
+.insight{transform-box:fill-box;transform-origin:center bottom;animation:insight 8s ease-in-out infinite}
+.speed-0{stroke-dashoffset:35;animation:progress-normal 10s linear infinite}.speed-1{stroke-dashoffset:0;animation:progress-fast 10s linear infinite}
+.cursor-0{transform:translateX(227.5px);animation:normal-cursor 10s linear infinite}.cursor-1{transform:translateX(350px);animation:fast-cursor 10s linear infinite}
+@keyframes seek{0%,8%{transform:translateX(0)}90%,100%{transform:translateX(378px)}}
+@keyframes trace{to{stroke-dashoffset:-96}}
+@keyframes stage{0%,22%{opacity:1}25%,97%{opacity:.12}100%{opacity:1}}
+@keyframes film{0%,25%,100%{transform:translateY(0)}45%,75%{transform:translateY(-4px)}}
+@keyframes insight{0%,20%,100%{transform:scaleY(.7)}45%,80%{transform:scaleY(1)}}
+@keyframes progress-normal{0%,10%{stroke-dashoffset:100}90%,100%{stroke-dashoffset:0}}
+@keyframes progress-fast{0%,10%{stroke-dashoffset:100}50%,100%{stroke-dashoffset:0}}
+@keyframes normal-cursor{0%,10%{transform:translateX(0)}90%,100%{transform:translateX(350px)}}
+@keyframes fast-cursor{0%,10%{transform:translateX(0)}50%,100%{transform:translateX(350px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.playhead{transform:translateX(160px)}.stage{opacity:.35}}
+</style>
+<rect x=".5" y=".5" width="439" height="251" rx="10" fill="#ffffff" stroke="#d8dee4"/>
+<text x="24" y="35" font-size="21" font-weight="600" fill="#24292f">Letterboxd analytics</text>
+<text x="24" y="60" font-size="13" fill="#656d76">Turn your film diary into useful insights.</text>
+<text x="24" y="79" font-size="13" fill="#656d76">Parse your CSV exports locally.</text>
 <path d="M413 20h8v8M412 29l9-9" fill="none" stroke="#656d76" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-<g class="frames"><rect x="307" y="30" width="91" height="53" rx="5" fill="none" stroke="#3c796d"/><rect x="316" y="42" width="20" height="29" rx="2" fill="#edf4f0" stroke="#3c796d" opacity="0.45"/><rect x="341" y="42" width="20" height="29" rx="2" fill="#edf4f0" stroke="#3c796d" opacity="0.65"/><rect x="366" y="42" width="20" height="29" rx="2" fill="#edf4f0" stroke="#3c796d" opacity="0.8500000000000001"/><path d="M314 35h4M314 78h4" stroke="#656d76" stroke-width="2"/><path d="M326 35h4M326 78h4" stroke="#656d76" stroke-width="2"/><path d="M338 35h4M338 78h4" stroke="#656d76" stroke-width="2"/><path d="M350 35h4M350 78h4" stroke="#656d76" stroke-width="2"/><path d="M362 35h4M362 78h4" stroke="#656d76" stroke-width="2"/><path d="M374 35h4M374 78h4" stroke="#656d76" stroke-width="2"/><path d="M386 35h4M386 78h4" stroke="#656d76" stroke-width="2"/></g>
+<g transform="translate(24 98)"><text x="0" y="12" class="caption">CSV → LIBRARY → INSIGHTS</text><text x="392" y="12" class="caption faint" text-anchor="end">WORKFLOW SKETCH</text><rect x="0" y="29" width="80" height="54" rx="5" fill="#edf4f0" stroke="#d8dee4"/><path d="M10 40h59" stroke="#3c796d" opacity="0.8"/><path d="M10 50h59" stroke="#3c796d" opacity="0.67"/><path d="M10 60h59" stroke="#3c796d" opacity="0.54"/><path d="M10 70h59" stroke="#3c796d" opacity="0.41000000000000003"/><path d="M29 30v52M51 30v52" stroke="#d8dee4"/><path d="M93 55h53m-5-4 5 4-5 4M244 55h45m-5-4 5 4-5 4" stroke="#d8dee4" fill="none"/><path class="trace" d="M93 55h53M244 55h45" stroke="#3c796d" stroke-dasharray="8 20" fill="none"/><rect class="film film-0" x="161" y="36" width="26" height="49" rx="3" fill="#edf4f0" stroke="#3c796d"/><rect class="film film-1" x="184" y="33" width="26" height="49" rx="3" fill="#edf4f0" stroke="#3c796d"/><rect class="film film-2" x="207" y="30" width="26" height="49" rx="3" fill="#edf4f0" stroke="#3c796d"/><rect class="insight" x="302" y="61" width="9" height="22" rx="2" fill="#3c796d" opacity="0.4" style="animation-delay:0s"/><rect class="insight" x="317" y="46" width="9" height="37" rx="2" fill="#3c796d" opacity="0.5" style="animation-delay:0.12s"/><rect class="insight" x="332" y="33" width="9" height="50" rx="2" fill="#3c796d" opacity="0.6000000000000001" style="animation-delay:0.24s"/><rect class="insight" x="347" y="52" width="9" height="31" rx="2" fill="#3c796d" opacity="0.7000000000000001" style="animation-delay:0.36s"/><rect class="insight" x="362" y="40" width="9" height="43" rx="2" fill="#3c796d" opacity="0.8" style="animation-delay:0.48s"/><rect class="insight" x="377" y="57" width="9" height="26" rx="2" fill="#3c796d" opacity="0.9" style="animation-delay:0.6s"/><text x="0" y="102" class="caption">EXPORT</text><text x="163" y="102" class="caption">PARSE</text><text x="301" y="102" class="caption">EXPLORE</text></g>
+<path d="M24 218H416" stroke="#d8dee4"/>
+<text x="24" y="239" font-size="11" fill="#656d76">TypeScript · React · Cloudflare</text>
 </svg>

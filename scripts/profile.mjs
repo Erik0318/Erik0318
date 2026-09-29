@@ -4,7 +4,6 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { renderDashboard, groupWeeks, repositoryLanguages } from './graphics.mjs';
 import { renderProject, projectSlug, accents } from './tiles.mjs';
-import { renderScene } from './scene.mjs';
 import { pacificDate, pacificTimestamp } from './time.mjs';
 export { renderDashboard };
 
@@ -149,30 +148,25 @@ export function generatedReadme(snapshot, stats, config) {
   });
   const rows = [];
   for (let i = 0; i < tiles.length; i += 2) rows.push('<p>\n' + tiles.slice(i, i + 2).join('\n') + '\n</p>');
-  return `<a href="https://${config.username.toLowerCase()}.github.io/${config.username}/" aria-label="Open Signal Garden, an interactive sculpture playground">
-  <picture>
-    <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/scene-dark-mobile.svg" />
-    <source media="(max-width: 600px)" srcset="./assets/scene-light-mobile.svg" />
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/scene-dark.svg" />
-    <img src="./assets/scene-light.svg" width="100%" alt="Signal Garden. An animated luminous knot. Click to open the interactive playground: drag to orbit, move to bend, and explore four project-inspired sculptures." />
-  </picture>
-</a>
+  const projectDetails = config.projects.map(project => {
+    const repo = snapshot.repos.find(repo => repo.name === project.name);
+    const release = repo.latestRelease && !repo.latestRelease.isDraft && !repo.latestRelease.isPrerelease
+      ? `[${markdown(repo.latestRelease.tagName)}](${safeUrl(repo.latestRelease.url)}) · ${pacificDate(repo.latestRelease.publishedAt)}`
+      : 'No stable release yet';
+    return `**[${markdown(project.title ?? project.name)}](${safeUrl(repo.url)})** — ${markdown(project.description)}\n\n${markdown(project.stack ?? repo.primaryLanguage?.name ?? '')} · ${release}`;
+  }).join('\n\n');
+  return `### Selected work
+
+${rows.join('\n\n')}
 
 <details>
-<summary>⌘ Playground controls &amp; field notes</summary>
+<summary>Project details &amp; latest releases</summary>
 
-Open [Signal Garden](https://${config.username.toLowerCase()}.github.io/${config.username}/), then move your pointer to bend the strands, drag to rotate, or click to send a ripple. Keys **1–4** change the sculpture, **Space** pauses, and **R** resets the orbit. On touchscreens, drag sideways or tap. The tempo slider changes the speed.
-
-Each form comes from a project below: **Resonance** folds a waveform into a knot, **Architecture** builds a circuit lattice, **Afterimage** twists a ribbon through space, and **Momentum** bends an orbit. Reduced-motion preferences start the playground paused and stop the README animation.
+${projectDetails}
 
 </details>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
-  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
-</picture>
-
-${rows.join('\n\n')}
+### Activity
 
 <picture>
   <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/stats-dark-mobile.svg" />
@@ -180,6 +174,16 @@ ${rows.join('\n\n')}
   <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg" />
   <img src="./assets/stats-light.svg" width="100%" alt="${number(stats.total)} contributions, ${number(stats.commits)} commits, ${stats.prs} pull requests. Full data available below." />
 </picture>
+
+<details>
+<summary>Contribution calendar</summary>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
+  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
+</picture>
+
+</details>
 
 <sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/${config.username}/${config.username}/actions/workflows/profile.yml) · ${pacificTimestamp(snapshot.updatedAt)}</sub>`;
 }
@@ -293,7 +297,6 @@ export async function main(args = process.argv.slice(2)) {
     output.set(`assets/project-${projectSlug(project)}-${theme}.svg`, renderProject(project, theme));
   }
   for (const theme of ['light', 'dark']) for (const mobile of [false, true]) {
-    output.set(`assets/scene-${theme}${mobile ? '-mobile' : ''}.svg`, renderScene(theme, mobile));
     output.set(`assets/stats-${theme}${mobile ? '-mobile' : ''}.svg`, renderDashboard(snapshot, stats, theme, mobile, config));
   }
   // Finish all API calls, validation, and rendering before replacing anything.
