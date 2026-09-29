@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -141,9 +142,12 @@ export function generatedReadme(snapshot, stats, config) {
     const repo = snapshot.repos.find(repo => repo.name === project.name);
     if (!repo) throw new Error(`Selected project not found: ${project.name}`);
     const slug = projectSlug(project);
+    // Change the image cache key only when the card artwork changes.
+    const revision = createHash('sha256').update(renderProject(project, 'light'))
+      .update(renderProject(project, 'dark')).digest('hex').slice(0, 12);
     return `  <a href="${safeUrl(repo.url)}"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-${slug}-dark.svg" />
-    <img src="./assets/project-${slug}-light.svg" width="410" alt="${escape(project.title ?? project.name)} — ${escape(project.description)}" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-${slug}-dark.svg?v=${revision}" />
+    <img src="./assets/project-${slug}-light.svg?v=${revision}" width="410" alt="${escape(project.title ?? project.name)} — ${escape(project.description)}" />
   </picture></a>`;
   });
   const rows = [];
