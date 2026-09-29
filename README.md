@@ -1,8 +1,10 @@
-# Welcome!! <img src="./assets/accents.svg" width="44" height="12.5" alt="" />
+# Welcome!!
 
 [erikdev.cc ↗](https://erikdev.cc) · [Repositories](https://github.com/Erik0318?tab=repositories) · ![Profile views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FErik0318&label=views&labelColor=%23555&countColor=%233c796d&style=flat)
 
 <!-- profile:start -->
+<img src="./assets/profile-divider.svg" width="100%" height="2" alt="" />
+
 ### Selected work
 
 <p>

@@ -89,9 +89,7 @@ text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,san
 </svg>\n`;
 }
 
-// Small, unlabeled color accents. No text, iconography, or identity claims.
-export const accents = `<svg xmlns="http://www.w3.org/2000/svg" width="88" height="25" viewBox="0 0 88 25">
-<defs><clipPath id="a"><rect width="40" height="25" rx="3"/></clipPath><clipPath id="b"><rect x="48" width="40" height="25" rx="3"/></clipPath></defs>
-<g clip-path="url(#a)"><path fill="#5BCEFA" d="M0 0h40v5H0zM0 20h40v5H0z"/><path fill="#F5A9B8" d="M0 5h40v5H0zM0 15h40v5H0z"/><path fill="#FFFFFF" d="M0 10h40v5H0z"/></g>
-<g clip-path="url(#b)"><path fill="#D60270" d="M48 0h40v10H48z"/><path fill="#9B4F96" d="M48 10h40v5H48z"/><path fill="#0038A8" d="M48 15h40v10H48z"/></g>
+export const divider = `<svg xmlns="http://www.w3.org/2000/svg" width="900" height="2" viewBox="0 0 900 2">
+<defs><linearGradient id="color" x1="0" x2="1"><stop stop-color="#5BCEFA"/><stop offset=".17" stop-color="#F5A9B8"/><stop offset=".3" stop-color="#FFFFFF"/><stop offset=".43" stop-color="#F5A9B8"/><stop offset=".54" stop-color="#5BCEFA"/><stop offset=".7" stop-color="#D60270"/><stop offset=".84" stop-color="#9B4F96"/><stop offset="1" stop-color="#0038A8"/></linearGradient></defs>
+<rect width="900" height="2" rx="1" fill="url(#color)" opacity=".6"/>
 </svg>\n`;

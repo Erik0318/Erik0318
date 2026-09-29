@@ -3,7 +3,7 @@ import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { renderDashboard, groupWeeks, repositoryLanguages } from './graphics.mjs';
-import { renderProject, projectAsset, accents } from './tiles.mjs';
+import { renderProject, projectAsset, divider } from './tiles.mjs';
 import { pacificDate, pacificTimestamp } from './time.mjs';
 export { renderDashboard };
 
@@ -154,7 +154,9 @@ export function generatedReadme(snapshot, stats, config) {
       : 'No stable release yet';
     return `**[${markdown(project.title ?? project.name)}](${safeUrl(repo.url)})** — ${markdown(project.description)}\n\n${markdown(project.stack ?? repo.primaryLanguage?.name ?? '')} · ${release}`;
   }).join('\n\n');
-  return `### Selected work
+  return `<img src="./assets/profile-divider.svg" width="100%" height="2" alt="" />
+
+### Selected work
 
 ${rows.join('\n\n')}
 
@@ -291,7 +293,7 @@ export async function main(args = process.argv.slice(2)) {
   validateProfileViewBadge(readme, config.username);
   const output = new Map([['README.md', replaceSection(readme, generatedReadme(snapshot, stats, config))]]);
   output.set('docs/activity.md', generatedDetails(snapshot, stats, config));
-  output.set('assets/accents.svg', accents);
+  output.set('assets/profile-divider.svg', divider);
   for (const project of config.projects) for (const theme of ['light', 'dark']) {
     output.set(projectAsset(project, theme), renderProject(project, theme));
   }
