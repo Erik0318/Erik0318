@@ -1,6 +1,6 @@
 # Welcome!! <img src="./assets/accents.svg" width="44" height="12.5" alt="" />
 
-[erikdev.cc ↗](https://erikdev.cc) · [GitHub](https://github.com/Erik0318?tab=repositories) · ![Profile views](https://komarev.com/ghpvc/?username=Erik0318&label=views&color=3c796d&style=flat&abbreviated=true)
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-erikdev.cc-3c796d?style=for-the-badge&logo=safari&logoColor=white)](https://erikdev.cc) [![Repositories](https://img.shields.io/badge/GITHUB-REPOSITORIES-24292f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Erik0318?tab=repositories) ![Profile views](https://komarev.com/ghpvc/?username=Erik0318&label=PROFILE%20VIEWS&color=3c796d&style=for-the-badge&abbreviated=true)
 
 <!-- profile:start -->
 <picture>

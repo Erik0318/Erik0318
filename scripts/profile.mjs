@@ -234,6 +234,21 @@ export function replaceSection(readme, content) {
   return readme.slice(0, readme.indexOf(start) + start.length) + '\n' + content + '\n' + readme.slice(readme.indexOf(end));
 }
 
+export function validateProfileViewBadge(readme, username) {
+  const match = readme.match(/!\[Profile views\]\(([^)\s]+)\)/);
+  if (!match) throw new Error('README must contain a non-empty profile-view badge URL');
+  let url;
+  try {
+    url = new URL(match[1]);
+  } catch {
+    throw new Error('README profile-view badge URL is invalid');
+  }
+  if (match[1].includes('+') || url.protocol !== 'https:' || url.hostname !== 'komarev.com' || url.pathname !== '/ghpvc/' ||
+      url.searchParams.get('username')?.toLowerCase() !== username.toLowerCase()) {
+    throw new Error('README profile-view badge must use a Camo-safe Komarev URL with the configured username');
+  }
+}
+
 async function atomicWrite(path, content) {
   await mkdir(dirname(path), { recursive: true });
   const temporary = `${path}.tmp`;
@@ -250,6 +265,7 @@ export async function main(args = process.argv.slice(2)) {
   const stats = analyze(snapshot, config);
   const readmePath = resolve(ROOT, 'README.md');
   const readme = await readFile(readmePath, 'utf8');
+  validateProfileViewBadge(readme, config.username);
   const output = new Map([['README.md', replaceSection(readme, generatedReadme(snapshot, stats, config))]]);
   output.set('docs/activity.md', generatedDetails(snapshot, stats, config));
   output.set('assets/accents.svg', accents);

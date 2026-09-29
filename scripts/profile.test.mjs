@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { analyze, renderDashboard, replaceSection, escape, generatedReadme, generatedDetails } from './profile.mjs';
+import { analyze, renderDashboard, replaceSection, validateProfileViewBadge, escape, generatedReadme, generatedDetails } from './profile.mjs';
 
 const config = { username: 'sample', excludeFromLanguages: ['profile'], projects: [] };
 const repo = (name, bytes, extra = {}) => ({ name, url: `https://github.com/sample/${name}`, isArchived: false,
@@ -104,6 +104,19 @@ test('README update preserves handwritten content and rejects missing/repeated/r
   for (const invalid of ['', source + '<!-- profile:start -->', '<!-- profile:end --><!-- profile:start -->']) {
     assert.throws(() => replaceSection(invalid, 'new'));
   }
+});
+
+test('profile-view badge validation rejects empty, malformed, and mismatched URLs', () => {
+  assert.doesNotThrow(() => validateProfileViewBadge(
+    '![Profile views](https://komarev.com/ghpvc/?username=sample&style=for-the-badge)', 'sample'));
+  for (const source of [
+    '![Profile views]()',
+    '![Profile views](not-a-url)',
+    '![Profile views](http://komarev.com/ghpvc/?username=sample)',
+    '![Profile views](https://example.com/ghpvc/?username=sample)',
+    '![Profile views](https://komarev.com/ghpvc/?username=someone-else)',
+    '![Profile views](https://komarev.com/ghpvc/?username=sample&label=PROFILE+VIEWS)',
+  ]) assert.throws(() => validateProfileViewBadge(source, 'sample'));
 });
 
 test('unavailable projects abort; API-provided titles cannot inject markup or table columns', () => {
