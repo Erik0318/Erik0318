@@ -4,6 +4,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { renderDashboard, groupWeeks, repositoryLanguages } from './graphics.mjs';
 import { renderProject, projectSlug, accents } from './tiles.mjs';
+import { renderScene } from './scene.mjs';
 import { pacificDate, pacificTimestamp } from './time.mjs';
 export { renderDashboard };
 
@@ -148,7 +149,25 @@ export function generatedReadme(snapshot, stats, config) {
   });
   const rows = [];
   for (let i = 0; i < tiles.length; i += 2) rows.push('<p>\n' + tiles.slice(i, i + 2).join('\n') + '\n</p>');
-  return `<picture>
+  return `<a href="https://${config.username.toLowerCase()}.github.io/${config.username}/" aria-label="Open Signal Garden, an interactive sculpture playground">
+  <picture>
+    <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="./assets/scene-dark-mobile.svg" />
+    <source media="(max-width: 600px)" srcset="./assets/scene-light-mobile.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/scene-dark.svg" />
+    <img src="./assets/scene-light.svg" width="100%" alt="Signal Garden. An animated luminous knot. Click to open the interactive playground: drag to orbit, move to bend, and explore four project-inspired sculptures." />
+  </picture>
+</a>
+
+<details>
+<summary>⌘ Playground controls &amp; field notes</summary>
+
+Open [Signal Garden](https://${config.username.toLowerCase()}.github.io/${config.username}/), then move your pointer to bend the strands, drag to rotate, or click to send a ripple. Keys **1–4** change the sculpture, **Space** pauses, and **R** resets the orbit. On touchscreens, drag sideways or tap. The tempo slider changes the speed.
+
+Each form comes from a project below: **Resonance** folds a waveform into a knot, **Architecture** builds a circuit lattice, **Afterimage** twists a ribbon through space, and **Momentum** bends an orbit. Reduced-motion preferences start the playground paused and stop the README animation.
+
+</details>
+
+<picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
   <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
 </picture>
@@ -274,6 +293,7 @@ export async function main(args = process.argv.slice(2)) {
     output.set(`assets/project-${projectSlug(project)}-${theme}.svg`, renderProject(project, theme));
   }
   for (const theme of ['light', 'dark']) for (const mobile of [false, true]) {
+    output.set(`assets/scene-${theme}${mobile ? '-mobile' : ''}.svg`, renderScene(theme, mobile));
     output.set(`assets/stats-${theme}${mobile ? '-mobile' : ''}.svg`, renderDashboard(snapshot, stats, theme, mobile, config));
   }
   // Finish all API calls, validation, and rendering before replacing anything.

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101b20" />
+    <meta
+      name="description"
+      content="Signal Garden by Erik. Four projects become four living sculptures. A small, playful experiment in creative computing."
+    />
+    <title>Signal Garden — Erik</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <a class="identity" href="https://github.com/Erik0318"
+        ><span class="status-dot"></span> ERIK
+        <span class="slash">/</span> EXPERIMENT 001</a
+      >
+      <a class="back" href="https://erikdev.cc"
+        >Visit my world <span aria-hidden="true">↗</span></a
+      >
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="title">
+        <p class="eyebrow">AN EXERCISE IN BEAUTIFUL CHAOS</p>
+        <h1 id="title">Signal<br />Garden<span>.</span></h1>
+        <p class="lede">A place where code forgets <br />to sit still.</p>
+        <p class="explanation">
+          Four things I build. Four shapes to get lost in.<br />Pick a signal.
+          Give it a little nudge.
+        </p>
+        <a
+          id="project-link"
+          class="project-link"
+          href="https://github.com/Erik0318/Suture"
+          >Explore Suture <span aria-hidden="true">↗</span></a
+        >
+        <div class="field-note">
+          <span class="note-index">FIELD NOTE 01</span>
+          <p id="description">
+            A waveform folded into an endless knot. Every strand finds its
+            rhythm.
+          </p>
+        </div>
+      </section>
+      <section class="instrument" aria-label="Interactive sculpture">
+        <div class="instrument-heading">
+          <span id="mode-label">01 / RESONANCE</span
+          ><span class="live-label"
+            ><span class="status-dot"></span
+            ><span id="state-label">IN MOTION</span></span
+          >
+        </div>
+        <div class="canvas-wrap">
+          <canvas
+            id="field"
+            tabindex="0"
+            aria-label="Sculpture. Drag to rotate; move your pointer to bend the strands. Arrow keys rotate, space pauses, and keys 1 through 4 choose a form."
+            >An interactive three-dimensional sculpture. Use the controls below
+            to select a project.</canvas
+          >
+          <div class="corner top-left"></div>
+          <div class="corner top-right"></div>
+          <div class="corner bottom-left"></div>
+          <div class="corner bottom-right"></div>
+          <div class="canvas-caption">
+            <span id="gesture-hint">MOVE TO BEND · DRAG TO ORBIT</span
+            ><span id="form-label">TORUS KNOT / 2:3</span>
+          </div>
+        </div>
+        <div class="transport">
+          <div class="control-group">
+            <button id="pause" aria-pressed="false">Pause motion</button
+            ><button id="reset">Reset orbit</button>
+          </div>
+          <label class="speed-control"
+            >TEMPO
+            <input
+              id="tempo"
+              type="range"
+              min="0.2"
+              max="2"
+              value="1"
+              step="0.1"
+              aria-label="Animation speed"
+            /><output id="tempo-value" for="tempo">1.0×</output></label
+          >
+        </div>
+      </section>
+      <nav class="modes" aria-label="Choose a signal">
+        <button class="mode active" data-mode="0" aria-pressed="true">
+          <span class="mode-number">01 / SOUND</span
+          ><span class="mode-name">Resonance <span>↗</span></span
+          ><span class="mode-project">Suture</span
+          ><svg viewBox="0 0 90 25" aria-hidden="true">
+            <path
+              d="M0 13h10l4-7 5 15 5-20 5 22 5-18 5 15 5-14 5 10 5-5 5 2h26"
+            />
+          </svg>
+        </button>
+        <button class="mode" data-mode="1" aria-pressed="false">
+          <span class="mode-number">02 / SILICON</span
+          ><span class="mode-name">Architecture <span>↗</span></span
+          ><span class="mode-project">Tang25K CPU</span
+          ><svg viewBox="0 0 90 25" aria-hidden="true">
+            <path d="M0 18h15V5h15v13h15V5h15v13h15V5h15" />
+          </svg>
+        </button>
+        <button class="mode" data-mode="2" aria-pressed="false">
+          <span class="mode-number">03 / CINEMA</span
+          ><span class="mode-name">Afterimage <span>↗</span></span
+          ><span class="mode-project">Letterboxd analytics</span
+          ><svg viewBox="0 0 90 25" aria-hidden="true">
+            <path d="M1 12Q12-8 23 12T45 12T67 12T89 12" />
+          </svg>
+        </button>
+        <button class="mode" data-mode="3" aria-pressed="false">
+          <span class="mode-number">04 / MOTION</span
+          ><span class="mode-name">Momentum <span>↗</span></span
+          ><span class="mode-project">TempoPilot</span
+          ><svg viewBox="0 0 90 25" aria-hidden="true">
+            <path d="M0 21L18 3v18L36 3v18L54 3v18L72 3v18L90 3" />
+          </svg>
+        </button>
+      </nav>
+    </main>
+    <footer>
+      <span>BUILT WITH CURIOSITY. BEST EXPLORED SLOWLY.</span
+      ><span
+        >KEYS <kbd>1</kbd>–<kbd>4</kbd> FORMS <kbd>SPACE</kbd> PAUSE
+        <kbd>R</kbd> RESET</span
+      ><a href="https://github.com/Erik0318/Erik0318/tree/main/lab"
+        >View the source ↗</a
+      >
+    </footer>
+    <p id="announcement" class="sr-only" aria-live="polite"></p>
+    <noscript
+      ><p class="no-script">
+        Enable JavaScript to play with the sculpture. You can still visit the
+        project using the link above.
+      </p></noscript
+    >
+    <script type="module" src="./main.mjs"></script>
+  </body>
+</html>
