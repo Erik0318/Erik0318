@@ -1,10 +1,9 @@
 import { execFileSync } from 'node:child_process';
-import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile, rename } from 'node:fs/promises';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { renderDashboard, groupWeeks, repositoryLanguages } from './graphics.mjs';
-import { renderProject, projectSlug, accents } from './tiles.mjs';
+import { renderProject, projectAsset, accents } from './tiles.mjs';
 import { pacificDate, pacificTimestamp } from './time.mjs';
 export { renderDashboard };
 
@@ -141,13 +140,9 @@ export function generatedReadme(snapshot, stats, config) {
   const tiles = config.projects.map(project => {
     const repo = snapshot.repos.find(repo => repo.name === project.name);
     if (!repo) throw new Error(`Selected project not found: ${project.name}`);
-    const slug = projectSlug(project);
-    // Change the image cache key only when the card artwork changes.
-    const revision = createHash('sha256').update(renderProject(project, 'light'))
-      .update(renderProject(project, 'dark')).digest('hex').slice(0, 12);
     return `  <a href="${safeUrl(repo.url)}"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-${slug}-dark.svg?v=${revision}" />
-    <img src="./assets/project-${slug}-light.svg?v=${revision}" width="410" alt="${escape(project.title ?? project.name)} — ${escape(project.description)}" />
+    <source media="(prefers-color-scheme: dark)" srcset="./${projectAsset(project, 'dark')}" />
+    <img src="./${projectAsset(project, 'light')}" width="410" alt="${escape(project.title ?? project.name)} — ${escape(project.description)}" />
   </picture></a>`;
   });
   const rows = [];
@@ -298,7 +293,7 @@ export async function main(args = process.argv.slice(2)) {
   output.set('docs/activity.md', generatedDetails(snapshot, stats, config));
   output.set('assets/accents.svg', accents);
   for (const project of config.projects) for (const theme of ['light', 'dark']) {
-    output.set(`assets/project-${projectSlug(project)}-${theme}.svg`, renderProject(project, theme));
+    output.set(projectAsset(project, theme), renderProject(project, theme));
   }
   for (const theme of ['light', 'dark']) for (const mobile of [false, true]) {
     output.set(`assets/stats-${theme}${mobile ? '-mobile' : ''}.svg`, renderDashboard(snapshot, stats, theme, mobile, config));

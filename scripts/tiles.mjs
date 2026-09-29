@@ -1,7 +1,15 @@
 import { themes } from './graphics.mjs';
+import { createHash } from 'node:crypto';
 
 const escape = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 export const projectSlug = project => project.name.toLowerCase().replace(/[^a-z0-9-]+/g, '-');
+
+// GitHub strips query parameters from relative raw-image redirects. Put the
+// artwork revision in the filename so an old CDN response cannot mask an edit.
+export function projectAsset(project, theme) {
+  const revision = createHash('sha256').update(renderProject(project, theme)).digest('hex').slice(0, 12);
+  return `assets/project-${projectSlug(project)}-${theme}-${revision}.svg`;
+}
 
 export function renderProject(project, theme) {
   const t = themes[theme];

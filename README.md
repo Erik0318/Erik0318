@@ -7,23 +7,23 @@
 
 <p>
   <a href="https://github.com/Erik0318/Suture"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-suture-dark.svg?v=57936fb458c8" />
-    <img src="./assets/project-suture-light.svg?v=57936fb458c8" width="410" alt="Suture — Cross-platform audio app: CD import, ordered track export, chapters, and bundled FFmpeg." />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-suture-dark-2433ba64b14b.svg" />
+    <img src="./assets/project-suture-light-60019399f2d1.svg" width="410" alt="Suture — Cross-platform audio app: CD import, ordered track export, chapters, and bundled FFmpeg." />
   </picture></a>
   <a href="https://github.com/Erik0318/tang25k-cpu"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-tang25k-cpu-dark.svg?v=b04709e5eeb9" />
-    <img src="./assets/project-tang25k-cpu-light.svg?v=b04709e5eeb9" width="410" alt="Tang25K CPU — A 16-bit computer built for the Tang Primer 25K FPGA. In progress." />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-tang25k-cpu-dark-05398e271519.svg" />
+    <img src="./assets/project-tang25k-cpu-light-bb4afb885dcf.svg" width="410" alt="Tang25K CPU — A 16-bit computer built for the Tang Primer 25K FPGA. In progress." />
   </picture></a>
 </p>
 
 <p>
   <a href="https://github.com/Erik0318/Letterboxd-AI-Review"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-letterboxd-ai-review-dark.svg?v=809a037b5bec" />
-    <img src="./assets/project-letterboxd-ai-review-light.svg?v=809a037b5bec" width="410" alt="Letterboxd analytics — Parses Letterboxd exports locally into film analytics, reports, and optional AI taste notes." />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-letterboxd-ai-review-dark-3ace1a662c51.svg" />
+    <img src="./assets/project-letterboxd-ai-review-light-798ffda84e0b.svg" width="410" alt="Letterboxd analytics — Parses Letterboxd exports locally into film analytics, reports, and optional AI taste notes." />
   </picture></a>
   <a href="https://github.com/Erik0318/TempoPilot"><picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-tempopilot-dark.svg?v=07cc07b0bf76" />
-    <img src="./assets/project-tempopilot-light.svg?v=07cc07b0bf76" width="410" alt="TempoPilot — Keyboard-driven video speed control with rebindable shortcuts and automatic video selection." />
+    <source media="(prefers-color-scheme: dark)" srcset="./assets/project-tempopilot-dark-84f99f1d40d4.svg" />
+    <img src="./assets/project-tempopilot-light-fde7f3a97dfd.svg" width="410" alt="TempoPilot — Keyboard-driven video speed control with rebindable shortcuts and automatic video selection." />
   </picture></a>
 </p>
 
