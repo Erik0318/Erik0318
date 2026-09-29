@@ -243,9 +243,10 @@ export function validateProfileViewBadge(readme, username) {
   } catch {
     throw new Error('README profile-view badge URL is invalid');
   }
-  if (match[1].includes('+') || url.protocol !== 'https:' || url.hostname !== 'komarev.com' || url.pathname !== '/ghpvc/' ||
-      url.searchParams.get('username')?.toLowerCase() !== username.toLowerCase()) {
-    throw new Error('README profile-view badge must use a Camo-safe Komarev URL with the configured username');
+  const expectedPath = `https://github.com/${username}`.toLowerCase();
+  if (match[1].includes('+') || url.protocol !== 'https:' || url.hostname !== 'api.visitorbadge.io' ||
+      url.pathname !== '/api/visitors' || url.searchParams.get('path')?.toLowerCase() !== expectedPath) {
+    throw new Error('README profile-view badge must use a Camo-safe Visitor Badge URL with the configured profile path');
   }
 }
 

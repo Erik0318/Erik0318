@@ -1,6 +1,6 @@
 # Profile statistics
 
-The README uses generated SVGs committed to this repository. GitHub serves the last successful snapshot even when its API or Actions is unavailable. The charts are custom code; the snake uses the same [Platane/snk](https://github.com/Platane/snk) solver as the reference profile, with a custom palette. The header uses Shields.io link badges and a Komarev profile-view badge. The view counter records page hits through GitHub's image proxy and cannot distinguish unique visitors. No personal access token or npm installation is required.
+The README uses generated SVGs committed to this repository. GitHub serves the last successful snapshot even when its API or Actions is unavailable. The charts are custom code; the snake uses the same [Platane/snk](https://github.com/Platane/snk) solver as the reference profile, with a custom palette. The header uses Shields.io link badges and a Visitor Badge profile-view counter. The view counter records page hits through GitHub's image proxy and cannot distinguish unique visitors. No personal access token or npm installation is required.
 
 ## Update
 

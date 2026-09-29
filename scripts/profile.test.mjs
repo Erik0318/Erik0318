@@ -108,14 +108,15 @@ test('README update preserves handwritten content and rejects missing/repeated/r
 
 test('profile-view badge validation rejects empty, malformed, and mismatched URLs', () => {
   assert.doesNotThrow(() => validateProfileViewBadge(
-    '![Profile views](https://komarev.com/ghpvc/?username=sample&style=for-the-badge)', 'sample'));
+    '![Profile views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fsample&style=for-the-badge)', 'sample'));
   for (const source of [
     '![Profile views]()',
     '![Profile views](not-a-url)',
-    '![Profile views](http://komarev.com/ghpvc/?username=sample)',
-    '![Profile views](https://example.com/ghpvc/?username=sample)',
-    '![Profile views](https://komarev.com/ghpvc/?username=someone-else)',
-    '![Profile views](https://komarev.com/ghpvc/?username=sample&label=PROFILE+VIEWS)',
+    '![Profile views](http://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fsample)',
+    '![Profile views](https://example.com/api/visitors?path=https%3A%2F%2Fgithub.com%2Fsample)',
+    '![Profile views](https://api.visitorbadge.io/wrong?path=https%3A%2F%2Fgithub.com%2Fsample)',
+    '![Profile views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fsomeone-else)',
+    '![Profile views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fsample&label=PROFILE+VIEWS)',
   ]) assert.throws(() => validateProfileViewBadge(source, 'sample'));
 });
 
