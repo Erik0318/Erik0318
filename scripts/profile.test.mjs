@@ -42,6 +42,15 @@ test('rendered dates use Pacific time while date-only contribution buckets retai
   }
 });
 
+test('snake is visible first and the color accent closes the profile', () => {
+  const snapshot = fixture([1]);
+  const readme = generatedReadme(snapshot, analyze(snapshot, config), config);
+  assert.match(readme, /^<picture>\s*<source[^>]+snake-dark\.svg/);
+  assert.ok(readme.indexOf('snake-light.svg') < readme.indexOf('### Selected work'));
+  assert.equal((readme.match(/snake-light\.svg/g) ?? []).length, 1);
+  assert.match(readme, /<img src="\.\/assets\/profile-footer\.svg" width="100%" height="8" alt="" \/>$/);
+});
+
 test('a gap yesterday breaks the current streak, without erasing the longest', () => {
   const stats = analyze(fixture([1, 1, 1, 0, 0]), config);
   assert.equal(stats.current, 0);

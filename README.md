@@ -3,7 +3,10 @@
 [erikdev.cc ↗](https://erikdev.cc) · [Repositories](https://github.com/Erik0318?tab=repositories) · ![Profile views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FErik0318&label=views&labelColor=%23555&countColor=%233c796d&style=flat)
 
 <!-- profile:start -->
-<img src="./assets/profile-divider.svg" width="100%" height="2" alt="" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
+  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
+</picture>
 
 ### Selected work
 
@@ -59,15 +62,7 @@ JavaScript · WebExtensions · No stable release yet
   <img src="./assets/stats-light.svg" width="100%" alt="247 contributions, 137 commits, 22 pull requests. Full data available below." />
 </picture>
 
-<details>
-<summary>Contribution calendar</summary>
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
-  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
-</picture>
-
-</details>
-
 <sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/Erik0318/Erik0318/actions/workflows/profile.yml) · 2026-09-29 11:57 PDT</sub>
+
+<img src="./assets/profile-footer.svg" width="100%" height="8" alt="" />
 <!-- profile:end -->

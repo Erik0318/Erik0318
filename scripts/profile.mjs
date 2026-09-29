@@ -154,7 +154,10 @@ export function generatedReadme(snapshot, stats, config) {
       : 'No stable release yet';
     return `**[${markdown(project.title ?? project.name)}](${safeUrl(repo.url)})** — ${markdown(project.description)}\n\n${markdown(project.stack ?? repo.primaryLanguage?.name ?? '')} · ${release}`;
   }).join('\n\n');
-  return `<img src="./assets/profile-divider.svg" width="100%" height="2" alt="" />
+  return `<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
+  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
+</picture>
 
 ### Selected work
 
@@ -176,17 +179,9 @@ ${projectDetails}
   <img src="./assets/stats-light.svg" width="100%" alt="${number(stats.total)} contributions, ${number(stats.commits)} commits, ${stats.prs} pull requests. Full data available below." />
 </picture>
 
-<details>
-<summary>Contribution calendar</summary>
+<sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/${config.username}/${config.username}/actions/workflows/profile.yml) · ${pacificTimestamp(snapshot.updatedAt)}</sub>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
-  <img src="./assets/snake-light.svg" width="100%" alt="Animated contribution calendar." />
-</picture>
-
-</details>
-
-<sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/${config.username}/${config.username}/actions/workflows/profile.yml) · ${pacificTimestamp(snapshot.updatedAt)}</sub>`;
+<img src="./assets/profile-footer.svg" width="100%" height="8" alt="" />`;
 }
 
 export function generatedDetails(snapshot, stats, config) {
@@ -293,7 +288,7 @@ export async function main(args = process.argv.slice(2)) {
   validateProfileViewBadge(readme, config.username);
   const output = new Map([['README.md', replaceSection(readme, generatedReadme(snapshot, stats, config))]]);
   output.set('docs/activity.md', generatedDetails(snapshot, stats, config));
-  output.set('assets/profile-divider.svg', divider);
+  output.set('assets/profile-footer.svg', divider);
   for (const project of config.projects) for (const theme of ['light', 'dark']) {
     output.set(projectAsset(project, theme), renderProject(project, theme));
   }
