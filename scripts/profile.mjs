@@ -162,7 +162,7 @@ ${rows.join('\n\n')}
   <img src="./assets/stats-light.svg" width="100%" alt="${number(stats.total)} contributions, ${number(stats.commits)} commits, ${stats.prs} pull requests. Full data available below." />
 </picture>
 
-<sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/${config.username}/GithubProfile/actions/workflows/profile.yml) · ${pacificTimestamp(snapshot.updatedAt)}</sub>`;
+<sub>[Data](./docs/activity.md) · [↻ 6h](https://github.com/${config.username}/${config.username}/actions/workflows/profile.yml) · ${pacificTimestamp(snapshot.updatedAt)}</sub>`;
 }
 
 export function generatedDetails(snapshot, stats, config) {
