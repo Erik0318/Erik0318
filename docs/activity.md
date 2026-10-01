@@ -17,7 +17,7 @@
 | Pull request reviews | 0 |
 | Issues opened | 1 |
 | Active days | 68 / 365 |
-| Current / longest streak | 3 / 10 days |
+| Current / longest streak | 0 / 10 days |
 | Most contributions in a day | 29 |
 | Most active week | 40 contributions · week of 2026-02-23 |
 
@@ -48,6 +48,6 @@ TypeScript 38.1% · JavaScript 28.0% · Rust 13.2% · HTML 9.0% · CSS 7.6% · O
 | Suture | 139,655 bytes | Rust 95.0% · Shell 2.5% · PowerShell 1.7% · Inno Setup 0.9% |
 | TempoPilot | 39,373 bytes | JavaScript 78.3% · CSS 12.4% · HTML 9.2% |
 
-<sub>Collected 2026-09-30 15:21 PDT. Activity covers GitHub calendar dates 2025-10-01 through 2026-09-30. Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
+<sub>Collected 2026-09-30 23:04 PDT. Activity covers GitHub calendar dates 2025-10-02 through 2026-10-01. Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
 
 [Methodology and refresh settings](./stats.md)

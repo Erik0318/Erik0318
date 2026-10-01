@@ -18,7 +18,7 @@
 <text x="276" y="196" font-size="31" fill="#24292f" font-weight="600">9</text>
 <text x="276" y="220" font-size="11" fill="#656d76" >Public repos</text>
 <path d="M24 240H396" stroke="#d8dee4"/>
-<text x="24" y="278" font-size="22" fill="#24292f" font-weight="600">3d</text>
+<text x="24" y="278" font-size="22" fill="#24292f" font-weight="600">0d</text>
 <text x="24" y="298" font-size="10" fill="#656d76" >Current streak</text>
 <text x="120" y="278" font-size="22" fill="#24292f" font-weight="600">10d</text>
 <text x="120" y="298" font-size="10" fill="#656d76" >Best streak</text>
