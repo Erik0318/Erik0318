@@ -2,6 +2,9 @@
 
 [erikdev.cc ↗](https://erikdev.cc) · [Repositories](https://github.com/Erik0318?tab=repositories) · ![Profile views](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FErik0318&label=views&labelColor=%23555&countColor=%233c796d&style=flat)
 
+[![Now playing on Spotify](https://spotifystats.com/badge/536a27da3b29a3ac0a8c0314c1c02658056b8b56.svg)](https://spotifystats.com/badge/536a27da3b29a3ac0a8c0314c1c02658056b8b56/open)
+<sub>via [spotifystats.com](https://spotifystats.com/?ref=badge)</sub>
+
 <!-- profile:start -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/snake-dark.svg" />
