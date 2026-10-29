@@ -11,8 +11,8 @@
 
 | Past year | |
 | :--- | ---: |
-| Contributions | 265 |
-| Commit contributions | 155 |
+| Contributions | 266 |
+| Commit contributions | 156 |
 | Pull requests opened | 22 |
 | Pull request reviews | 0 |
 | Issues opened | 1 |
@@ -36,18 +36,18 @@
 
 **Languages by code size**
 
-TypeScript 35.6% · JavaScript 26.8% · HTML 14.3% · Rust 12.4% · CSS 7.1% · Other 3.8%
+TypeScript 35.6% · JavaScript 26.8% · HTML 14.3% · Rust 12.3% · CSS 7.1% · Other 3.8%
 
 **Repository language composition**
 
 | Repository | Code size | Languages |
 | :--- | ---: | :--- |
 | Letterboxd analytics | 464,170 bytes | TypeScript 82.4% · JavaScript 9.1% · CSS 8.5% · HTML 0.1% |
-| HomePage | 216,787 bytes | HTML 66.4% · JavaScript 26.1% · CSS 7.6% |
+| HomePage | 216,843 bytes | HTML 66.4% · JavaScript 26.0% · CSS 7.6% |
 | Twigoo | 164,744 bytes | JavaScript 89.8% · CSS 9.8% · HTML 0.4% |
 | Suture | 139,655 bytes | Rust 95.0% · Shell 2.5% · PowerShell 1.7% · Inno Setup 0.9% |
 | TempoPilot | 39,373 bytes | JavaScript 78.3% · CSS 12.4% · HTML 9.2% |
 
-<sub>Collected 2026-10-28 22:55 PDT. Activity covers GitHub calendar dates 2025-10-30 through 2026-10-29. Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
+<sub>Collected 2026-10-29 06:12 PDT. Activity covers GitHub calendar dates 2025-10-30 through 2026-10-29. Stars and repository counts cover public, owned, non-fork repositories. Language percentages use code bytes and exclude archived repositories and this profile. Streaks use calendar days, with today allowed to finish. These numbers describe activity, not proficiency.</sub>
 
 [Methodology and refresh settings](./stats.md)
