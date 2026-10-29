@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="420" height="1220" viewBox="0 0 420 1220" role="img" aria-labelledby="title desc">
-<title id="title">Erik0318 · GitHub statistics</title><desc id="desc">257 contributions, 147 commits, 22 pull requests, 0 reviews in the past year. 3 stars and 9 public original repositories. Longest streak 10 days. Weekly contribution history, language distribution, weekday activity, and repository code composition.</desc>
+<title id="title">Erik0318 · GitHub statistics</title><desc id="desc">265 contributions, 155 commits, 22 pull requests, 0 reviews in the past year. 3 stars and 9 public original repositories. Longest streak 10 days. Weekly contribution history, language distribution, weekday activity, and repository code composition.</desc>
 <style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-variant-numeric:tabular-nums}.draw{animation:draw 1.8s ease-out both}.bar,.ring{animation:fade 1.2s ease-out both}@keyframes draw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}@keyframes fade{from{opacity:.65}to{opacity:1}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style>
 <rect x=".5" y=".5" width="419" height="1219" rx="10" fill="#0d1117" stroke="#30363d"/>
 <text x="24" y="32" font-size="16" fill="#e6edf3" font-weight="600">GitHub activity</text>
 <text x="24" y="54" font-size="11" fill="#919aa5" >Oct 28, 2026 · PT</text>
 <text x="24" y="78" font-size="11" fill="#919aa5" >Activity: 12 mo</text>
-<text x="24" y="118" font-size="31" fill="#e6edf3" font-weight="600">257</text>
+<text x="24" y="118" font-size="31" fill="#e6edf3" font-weight="600">265</text>
 <text x="24" y="142" font-size="11" fill="#919aa5" >Contributions</text>
-<text x="150" y="118" font-size="31" fill="#e6edf3" font-weight="600">147</text>
+<text x="150" y="118" font-size="31" fill="#e6edf3" font-weight="600">155</text>
 <text x="150" y="142" font-size="11" fill="#919aa5" >Commits</text>
 <text x="276" y="118" font-size="31" fill="#e6edf3" font-weight="600">22</text>
 <text x="276" y="142" font-size="11" fill="#919aa5" >Pull requests</text>
@@ -35,8 +35,8 @@
 <text x="40" y="464" font-size="10" fill="#919aa5" text-anchor="end">20</text>
 <path d="M50 406H396" stroke="#30363d" stroke-dasharray="2 5"/>
 <text x="40" y="410" font-size="10" fill="#919aa5" text-anchor="end">40</text>
-<path d="M50.00 514.00 L56.65 514.00 L63.31 514.00 L69.96 514.00 L76.62 514.00 L83.27 514.00 L89.92 514.00 L96.58 514.00 L103.23 514.00 L109.88 514.00 L116.54 514.00 L123.19 514.00 L129.85 514.00 L136.50 514.00 L143.15 514.00 L149.81 514.00 L156.46 497.80 L163.12 406.00 L169.77 454.60 L176.42 468.10 L183.08 476.20 L189.73 449.20 L196.38 484.30 L203.04 492.40 L209.69 505.90 L216.35 505.90 L223.00 481.60 L229.65 511.30 L236.31 508.60 L242.96 508.60 L249.62 511.30 L256.27 514.00 L262.92 503.20 L269.58 489.70 L276.23 435.70 L282.88 511.30 L289.54 449.20 L296.19 511.30 L302.85 514.00 L309.50 508.60 L316.15 514.00 L322.81 514.00 L329.46 514.00 L336.12 514.00 L342.77 514.00 L349.42 514.00 L356.08 514.00 L362.73 492.40 L369.38 503.20 L376.04 514.00 L382.69 514.00 L389.35 514.00 L396.00 489.70 L396 514 L50 514Z" fill="#15271f"/>
-<path class="draw" d="M50.00 514.00 L56.65 514.00 L63.31 514.00 L69.96 514.00 L76.62 514.00 L83.27 514.00 L89.92 514.00 L96.58 514.00 L103.23 514.00 L109.88 514.00 L116.54 514.00 L123.19 514.00 L129.85 514.00 L136.50 514.00 L143.15 514.00 L149.81 514.00 L156.46 497.80 L163.12 406.00 L169.77 454.60 L176.42 468.10 L183.08 476.20 L189.73 449.20 L196.38 484.30 L203.04 492.40 L209.69 505.90 L216.35 505.90 L223.00 481.60 L229.65 511.30 L236.31 508.60 L242.96 508.60 L249.62 511.30 L256.27 514.00 L262.92 503.20 L269.58 489.70 L276.23 435.70 L282.88 511.30 L289.54 449.20 L296.19 511.30 L302.85 514.00 L309.50 508.60 L316.15 514.00 L322.81 514.00 L329.46 514.00 L336.12 514.00 L342.77 514.00 L349.42 514.00 L356.08 514.00 L362.73 492.40 L369.38 503.20 L376.04 514.00 L382.69 514.00 L389.35 514.00 L396.00 489.70" fill="none" stroke="#9bc5b5" stroke-width="2" stroke-linejoin="round" pathLength="1"/>
+<path d="M50.00 514.00 L56.65 514.00 L63.31 514.00 L69.96 514.00 L76.62 514.00 L83.27 514.00 L89.92 514.00 L96.58 514.00 L103.23 514.00 L109.88 514.00 L116.54 514.00 L123.19 514.00 L129.85 514.00 L136.50 514.00 L143.15 514.00 L149.81 514.00 L156.46 497.80 L163.12 406.00 L169.77 454.60 L176.42 468.10 L183.08 476.20 L189.73 449.20 L196.38 484.30 L203.04 492.40 L209.69 505.90 L216.35 505.90 L223.00 481.60 L229.65 511.30 L236.31 508.60 L242.96 508.60 L249.62 511.30 L256.27 514.00 L262.92 503.20 L269.58 489.70 L276.23 435.70 L282.88 511.30 L289.54 449.20 L296.19 511.30 L302.85 514.00 L309.50 508.60 L316.15 514.00 L322.81 514.00 L329.46 514.00 L336.12 514.00 L342.77 514.00 L349.42 514.00 L356.08 514.00 L362.73 492.40 L369.38 503.20 L376.04 514.00 L382.69 514.00 L389.35 514.00 L396.00 468.10 L396 514 L50 514Z" fill="#15271f"/>
+<path class="draw" d="M50.00 514.00 L56.65 514.00 L63.31 514.00 L69.96 514.00 L76.62 514.00 L83.27 514.00 L89.92 514.00 L96.58 514.00 L103.23 514.00 L109.88 514.00 L116.54 514.00 L123.19 514.00 L129.85 514.00 L136.50 514.00 L143.15 514.00 L149.81 514.00 L156.46 497.80 L163.12 406.00 L169.77 454.60 L176.42 468.10 L183.08 476.20 L189.73 449.20 L196.38 484.30 L203.04 492.40 L209.69 505.90 L216.35 505.90 L223.00 481.60 L229.65 511.30 L236.31 508.60 L242.96 508.60 L249.62 511.30 L256.27 514.00 L262.92 503.20 L269.58 489.70 L276.23 435.70 L282.88 511.30 L289.54 449.20 L296.19 511.30 L302.85 514.00 L309.50 508.60 L316.15 514.00 L322.81 514.00 L329.46 514.00 L336.12 514.00 L342.77 514.00 L349.42 514.00 L356.08 514.00 L362.73 492.40 L369.38 503.20 L376.04 514.00 L382.69 514.00 L389.35 514.00 L396.00 468.10" fill="none" stroke="#9bc5b5" stroke-width="2" stroke-linejoin="round" pathLength="1"/>
 <circle cx="163.1153846153846" cy="406" r="3.5" fill="#9bc5b5" stroke="#0d1117" stroke-width="2"><title>Week of 2026-02-23: 40 contributions</title></circle>
 <text x="163.1153846153846" y="395" font-size="11" fill="#9bc5b5" text-anchor="middle">40</text>
 <text x="50" y="536" font-size="10" fill="#919aa5" text-anchor="start">Oct</text>
@@ -47,20 +47,20 @@
 <text x="24" y="577" font-size="15" fill="#e6edf3" font-weight="600">Language mix</text>
 <text x="24" y="598" font-size="11" fill="#919aa5" >Code bytes</text>
 <circle cx="96" cy="689" r="61" fill="none" stroke="#20262e" stroke-width="18"/>
-<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#aecfbe" stroke-width="18" stroke-dasharray="134.537 383.274" stroke-dashoffset="0" transform="rotate(-90 96 689)"><title>TypeScript: 35.9%</title></circle>
-<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#8eaf9f" stroke-width="18" stroke-dasharray="98.119 383.274" stroke-dashoffset="-137.53725637425205" transform="rotate(-90 96 689)"><title>JavaScript: 26.4%</title></circle>
-<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#709381" stroke-width="18" stroke-dasharray="51.890 383.274" stroke-dashoffset="-238.65652006061316" transform="rotate(-90 96 689)"><title>HTML: 14.3%</title></circle>
-<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#567362" stroke-width="18" stroke-dasharray="44.677 383.274" stroke-dashoffset="-293.54615699753805" transform="rotate(-90 96 689)"><title>Rust: 12.4%</title></circle>
-<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#3e5548" stroke-width="18" stroke-dasharray="24.552 383.274" stroke-dashoffset="-341.2233134744022" transform="rotate(-90 96 689)"><title>CSS: 7.2%</title></circle>
-<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#2c3c34" stroke-width="18" stroke-dasharray="12.324 383.274" stroke-dashoffset="-368.7756360135305" transform="rotate(-90 96 689)"><title>Other: 3.8%</title></circle>
+<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#aecfbe" stroke-width="18" stroke-dasharray="133.549 383.274" stroke-dashoffset="0" transform="rotate(-90 96 689)"><title>TypeScript: 35.6%</title></circle>
+<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#8eaf9f" stroke-width="18" stroke-dasharray="99.649 383.274" stroke-dashoffset="-136.54900260328986" transform="rotate(-90 96 689)"><title>JavaScript: 26.8%</title></circle>
+<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#709381" stroke-width="18" stroke-dasharray="51.974 383.274" stroke-dashoffset="-239.19840195814595" transform="rotate(-90 96 689)"><title>HTML: 14.3%</title></circle>
+<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#567362" stroke-width="18" stroke-dasharray="44.335 383.274" stroke-dashoffset="-294.1726803693656" transform="rotate(-90 96 689)"><title>Rust: 12.4%</title></circle>
+<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#3e5548" stroke-width="18" stroke-dasharray="24.373 383.274" stroke-dashoffset="-341.5072596353771" transform="rotate(-90 96 689)"><title>CSS: 7.1%</title></circle>
+<circle class="ring" cx="96" cy="689" r="61" fill="none" stroke="#2c3c34" stroke-width="18" stroke-dasharray="12.235 383.274" stroke-dashoffset="-368.8798140626666" transform="rotate(-90 96 689)"><title>Other: 3.8%</title></circle>
 <text x="96" y="689" font-size="25" fill="#e6edf3" text-anchor="middle" font-weight="600">36%</text>
 <text x="96" y="711" font-size="11" fill="#919aa5" text-anchor="middle">TypeScript</text>
 <rect x="190" y="626" width="7" height="7" rx="2" fill="#aecfbe" />
 <text x="205" y="634" font-size="11" fill="#e6edf3" >TypeScript</text>
-<text x="396" y="634" font-size="11" fill="#919aa5" text-anchor="end">35.9%</text>
+<text x="396" y="634" font-size="11" fill="#919aa5" text-anchor="end">35.6%</text>
 <rect x="190" y="650" width="7" height="7" rx="2" fill="#8eaf9f" />
 <text x="205" y="658" font-size="11" fill="#e6edf3" >JavaScript</text>
-<text x="396" y="658" font-size="11" fill="#919aa5" text-anchor="end">26.4%</text>
+<text x="396" y="658" font-size="11" fill="#919aa5" text-anchor="end">26.8%</text>
 <rect x="190" y="674" width="7" height="7" rx="2" fill="#709381" />
 <text x="205" y="682" font-size="11" fill="#e6edf3" >HTML</text>
 <text x="396" y="682" font-size="11" fill="#919aa5" text-anchor="end">14.3%</text>
@@ -69,7 +69,7 @@
 <text x="396" y="706" font-size="11" fill="#919aa5" text-anchor="end">12.4%</text>
 <rect x="190" y="722" width="7" height="7" rx="2" fill="#3e5548" />
 <text x="205" y="730" font-size="11" fill="#e6edf3" >CSS</text>
-<text x="396" y="730" font-size="11" fill="#919aa5" text-anchor="end">7.2%</text>
+<text x="396" y="730" font-size="11" fill="#919aa5" text-anchor="end">7.1%</text>
 <rect x="190" y="746" width="7" height="7" rx="2" fill="#2c3c34" />
 <text x="205" y="754" font-size="11" fill="#e6edf3" >Other</text>
 <text x="396" y="754" font-size="11" fill="#919aa5" text-anchor="end">3.8%</text>
@@ -82,8 +82,8 @@
 <rect x="86.14285714285714" y="923.65625" width="33.142857142857146" height="22.34375" rx="2" fill="#9bc5b5" class="bar"/>
 <text x="103.71428571428571" y="915.65625" font-size="10" fill="#919aa5" text-anchor="middle">22</text>
 <text x="103.71428571428571" y="966" font-size="11" fill="#919aa5" text-anchor="middle">T</text>
-<rect x="139.28571428571428" y="895.21875" width="33.142857142857146" height="50.78125" rx="2" fill="#9bc5b5" class="bar"/>
-<text x="156.85714285714286" y="887.21875" font-size="10" fill="#919aa5" text-anchor="middle">50</text>
+<rect x="139.28571428571428" y="887.09375" width="33.142857142857146" height="58.90625" rx="2" fill="#9bc5b5" class="bar"/>
+<text x="156.85714285714286" y="879.09375" font-size="10" fill="#919aa5" text-anchor="middle">58</text>
 <text x="156.85714285714286" y="966" font-size="11" fill="#919aa5" text-anchor="middle">W</text>
 <rect x="192.42857142857144" y="917.5625" width="33.142857142857146" height="28.4375" rx="2" fill="#9bc5b5" class="bar"/>
 <text x="210.00000000000003" y="909.5625" font-size="10" fill="#919aa5" text-anchor="middle">28</text>
@@ -107,10 +107,10 @@
 <rect x="336.87" y="1076" width="0.13" height="8" fill="#709381"><title>Letterboxd-AI-Review · HTML: 0.1%</title></rect>
 <text x="396" y="1085" font-size="10" fill="#919aa5" text-anchor="end">464k</text>
 <text x="24" y="1109" font-size="11" fill="#e6edf3" >HomePage</text>
-<rect x="159.00" y="1100" width="121.32" height="8" fill="#709381"><title>HomePage · HTML: 68.2%</title></rect>
-<rect x="280.32" y="1100" width="42.70" height="8" fill="#8eaf9f"><title>HomePage · JavaScript: 24.0%</title></rect>
-<rect x="323.02" y="1100" width="13.98" height="8" fill="#3e5548"><title>HomePage · CSS: 7.9%</title></rect>
-<text x="396" y="1109" font-size="10" fill="#919aa5" text-anchor="end">209k</text>
+<rect x="159.00" y="1100" width="118.11" height="8" fill="#709381"><title>HomePage · HTML: 66.4%</title></rect>
+<rect x="277.11" y="1100" width="46.37" height="8" fill="#8eaf9f"><title>HomePage · JavaScript: 26.1%</title></rect>
+<rect x="323.48" y="1100" width="13.52" height="8" fill="#3e5548"><title>HomePage · CSS: 7.6%</title></rect>
+<text x="396" y="1109" font-size="10" fill="#919aa5" text-anchor="end">217k</text>
 <text x="24" y="1133" font-size="11" fill="#e6edf3" >Twigoo</text>
 <rect x="159.00" y="1124" width="159.82" height="8" fill="#8eaf9f"><title>Twigoo · JavaScript: 89.8%</title></rect>
 <rect x="318.82" y="1124" width="17.38" height="8" fill="#3e5548"><title>Twigoo · CSS: 9.8%</title></rect>
